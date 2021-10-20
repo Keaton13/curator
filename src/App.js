@@ -3,6 +3,7 @@ import logo from './logo.svg';
 import { injected } from './components/wallet/connectors';
 import './App.css';
 import { useWeb3React } from '@web3-react/core';
+import Header from '../src/components/header'
 
 function App() {
   const [ethBalance, setBalance] = React.useState(null);
@@ -43,9 +44,9 @@ function App() {
 
   return (
     <div className="App">
-      <h1 className="mt-3">Curator</h1>
-      <div className="container mt-5">
-        <div className="row text-center">
+      <div className="container background-color-app">
+        <Header />
+        <div className="row text-center mt-3">
           <button onClick={connect} className="btn btn-outline-primary w-50 mx-auto">Connect To MetaMask</button>
         </div>
         <div className="row mt-3 mb-3">
