@@ -47,18 +47,20 @@ function App() {
       <div className="container background-color-app">
         <Header />
         <div className="row text-center mt-3">
-          <button onClick={connect} className="btn btn-outline-primary w-50 mx-auto">Connect To MetaMask</button>
+          <h2>Account Balance</h2>
+          <h4 className="mt-2">{ethBalance ? ethBalance : <h5>Can't fetch account balance</h5>}</h4>
         </div>
         <div className="row mt-3 mb-3">
           {active ? <span>Connected To <b>{account}</b></span> : <span>Not Connected</span>}
         </div>
-        <div className="row">
-          <button onClick={disconnect} className="btn btn-outline-danger w-50 mr-2 mx-auto">Disconnect</button>
-          <button onClick={getData} className="btn btn-outline-primary w-50 ml-2 mx-auto">Get Data!</button>
-        </div>
         <div className="row text-center mt-3">
-          <h2>Account Balance</h2>
-          <h4 className="mt-3">{ethBalance ? ethBalance : <h5>Can't fetch account balance</h5>}</h4>
+          {active ? <span></span> : <button onClick={connect} className="btn btn-outline-primary w-50 mx-auto">Connect To MetaMask</button>}
+        </div>
+        <div className="row mt-3">
+          {active && <button onClick={getData} className="btn btn-outline-primary w-50 ml-2 mx-auto">Get Data!</button>}
+        </div>
+        <div className="row mt-3">
+          <button onClick={disconnect} className="btn btn-outline-danger w-50 mr-2 mx-auto">Disconnect</button>
         </div>
       </div>
     </div>
