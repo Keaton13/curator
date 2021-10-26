@@ -1,29 +1,34 @@
-import React from 'react'
+import React, { useEffect } from 'react'
 import { injected } from './wallet/connectors';
 import { useWeb3React } from '@web3-react/core';
 
 const Balance = props => {
     const [ethBalance, setBalance] = React.useState(null);
+    const [metaMaskStatus, setMetaMaskStatus] = React.useState(false);
     const { active, account, library, connector, activate, deactivate } = useWeb3React();
 
-    async function connect() {
-        try {
-            await activate(injected)
-        } catch (ex) {
-            console.log(ex)
-        }
-    }
+    useEffect(() => {
+        if (metaMaskStatus === false) {
+            try {
+                activate(injected)
+            } catch (ex) {
+                console.log(ex)
+            }
+            getData();
+        } 
+    }, [library, metaMaskStatus])
 
     async function disconnect() {
-        try {
-            deactivate();
-            setBalance(null)
-        } catch (ex) {
-            console.log(ex);
-        }
+        setMetaMaskStatus(true);
+            try {
+                setBalance(null)
+                deactivate();
+            } catch (ex) {
+                console.log(ex);
+            }
     }
 
-    async function getData() {
+    function getData() {
         if (library) {
             library.eth.getBalance(account).then(result => {
                 console.log(result)
@@ -48,10 +53,10 @@ const Balance = props => {
                 {active ? <span>Connected To <b>{account}</b></span> : <span>Not Connected</span>}
             </div>
             <div className="row text-center mt-3">
-                {active ? <span></span> : <button onClick={connect} className="btn btn-outline-primary w-50 mx-auto">Connect To MetaMask</button>}
+                {active ? <span></span> : <button onClick={() => {setMetaMaskStatus(false)}} className="btn btn-outline-primary w-50 mx-auto">Connect To MetaMask</button>}
             </div>
             <div className="row mt-3">
-                {active && <button onClick={getData} className="btn btn-outline-primary w-50 ml-2 mx-auto">Get Data!</button>}
+                {/* {active && <button onClick={getData()} className="btn btn-outline-primary w-50 ml-2 mx-auto">Get Data!</button>} */}
             </div>
             <div className="row mt-3">
                 {active && <button onClick={disconnect} className="btn btn-outline-danger w-50 mr-2 mx-auto">Disconnect</button>}
