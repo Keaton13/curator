@@ -39,13 +39,19 @@ class Ticker extends React.Component {
             <div>
                 <div>
                     {data && data.map(dat => {
-                    return (
-                        <div>
-                            <h4>{dat.name}</h4>
-                            <h4>{dat.quote.USD.price.toFixed(2)}</h4>
-                        </div>
-                    )
-                })}
+                        return (
+                            <div className="row">
+                                <div className="col">
+                                    <h4>{dat.name}</h4>
+                                    <h5>{dat.quote.USD.price.toFixed(2) + '$'}</h5>
+                                </div>
+                                <div className="col">
+                                    <h5>{'1hr ' + dat.quote.USD.percent_change_1h.toFixed(2) + '%'}</h5>
+                                    <h5>{'7d ' + dat.quote.USD.percent_change_7d.toFixed(2) + '%'}</h5>
+                                </div>
+                            </div>
+                        )
+                    })}
                 </div>
             </div>
         )
