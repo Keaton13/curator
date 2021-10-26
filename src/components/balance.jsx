@@ -50,7 +50,7 @@ const Balance = props => {
                 <h4 className="mt-2">{ethBalance ? ethBalance : <h5>Can't fetch account balance</h5>}</h4>
             </div>
             <div className="row mt-3 mb-3">
-                {active ? <span>Connected To <b>{account}</b></span> : <span>Not Connected</span>}
+                {active ? <span>Connected To <b className="walletFontSize">{account}</b></span> : <span>Not Connected</span>}
             </div>
             <div className="row text-center mt-3">
                 {active ? <span></span> : <button onClick={() => {setMetaMaskStatus(false)}} className="btn btn-outline-primary w-50 mx-auto">Connect To MetaMask</button>}
