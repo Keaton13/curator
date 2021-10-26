@@ -8,7 +8,7 @@ const Balance = props => {
     const { active, account, library, connector, activate, deactivate } = useWeb3React();
 
     useEffect(() => {
-        if (metaMaskStatus === false) {
+        if (metaMaskStatus == false) {
             try {
                 activate(injected)
             } catch (ex) {
