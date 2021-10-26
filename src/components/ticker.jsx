@@ -2,7 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Header from './header';
-import { connectToApi } from '../redux/actions/coinMarketCapAction';
+import { connectToApi, getCoinMetaData } from '../redux/actions/coinMarketCapAction';
 class Ticker extends React.Component {
     constructor() {
         super()
@@ -28,44 +28,42 @@ class Ticker extends React.Component {
 
     render() {
         let data;
-        let price;
         if (this.props.coinData.data) {
             data = this.props.coinData.data.data
             // this.renderCoinData(data);
-            data = data.splice(0, 5);
+            data = data.splice(0, 100);
             console.log(data)
         }
         return (
             <div>
                 <div>
-                    {data && data.map(dat => {
-                        return (
-                            <div className="row">
-                                <table className="tabe">
-                                    <thread className="thread-dark">
-                                        <tr>
-                                            <th scope="col"></th>
-                                            <th scope="col">Name</th>
-                                            <th scope="col">Price</th>
-                                            <th scope="col">1hr</th>
-                                            <th scope="col">7d</th>
+                    <div className="row">
+                        <table className="table">
+                            <thead className="bg-dark text-white">
+                                <tr>
+                                    <th scope="col">#</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Price</th>
+                                    <th scope="col">1hr</th>
+                                    <th scope="col">7d</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                {data && data.map(dat => {
+                                    console.log(dat)
+                                    return (
+                                        <tr className="mt-3 mb-3 bg-white">
+                                            <th scope="row">{dat.cmc_rank}</th>
+                                            <td>{dat.name}</td>
+                                            <td>{dat.quote.USD.price.toFixed(2) + '$'}</td>
+                                            <td>{dat.quote.USD.percent_change_1h.toFixed(2) + '%'}</td>
+                                            <td>{dat.quote.USD.percent_change_7d.toFixed(2) + '%'}</td>
                                         </tr>
-                                    </thread>
-                                    <tbody>
-                                        {data && data.map(dat => {
-                                            return (
-                                                <tr>
-                                                    <th scope="row"></th>
-                                                    <td>{dat.name}</td>
-                                                    <td>{dat.quote.USD.price.toFixed(2) + '$'}</td>
-                                                    <td>{'1hr ' + dat.quote.USD.percent_change_1h.toFixed(2) + '%'}</td>
-                                                    <td>{'7d ' + dat.quote.USD.percent_change_7d.toFixed(2) + '%'}</td>
-                                                </tr>
-                                            )
-                                        })}
-                                    </tbody>
-                                </table>
-                                {/* <div className="col">
+                                    )
+                                })}
+                            </tbody>
+                        </table>
+                        {/* <div className="col">
                                     <h4>{dat.name}</h4>
                                     <h5>{dat.quote.USD.price.toFixed(2) + '$'}</h5>
                                 </div>
@@ -73,9 +71,7 @@ class Ticker extends React.Component {
                                     <h5>{'1hr ' + dat.quote.USD.percent_change_1h.toFixed(2) + '%'}</h5>
                                     <h5>{'7d ' + dat.quote.USD.percent_change_7d.toFixed(2) + '%'}</h5>
                                 </div> */}
-                            </div>
-                        )
-                    })}
+                    </div>
                 </div>
             </div>
         )
@@ -90,4 +86,4 @@ const mapStateToProps = state => ({
     coinData: state.coinMarketCap.coinData
 })
 
-export default connect(mapStateToProps, { connectToApi })(Ticker);
+export default connect(mapStateToProps, { connectToApi, getCoinMetaData })(Ticker);
