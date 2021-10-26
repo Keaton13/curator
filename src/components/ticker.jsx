@@ -6,33 +6,23 @@ import { connectToApi, getCoinMetaData } from '../redux/actions/coinMarketCapAct
 class Ticker extends React.Component {
     constructor() {
         super()
-
-        this.renderCoinData = this.renderCoinData.bind(this);
     }
 
     componentDidMount() {
         this.props.connectToApi();
+        // this.props.getCoinMetaData();
         console.log('Connected')
-    }
-
-    renderCoinData(data) {
-        console.log(data)
-        for (let i = 0; i < 4; i++) {
-            return (
-                <div>
-                    <h4>{data[i].name}</h4>
-                </div>
-            )
-        }
     }
 
     render() {
         let data;
+        let metaData;
         if (this.props.coinData.data) {
             data = this.props.coinData.data.data
-            // this.renderCoinData(data);
+            metaData = this.props.coinData.coinMetaData
             data = data.splice(0, 100);
             console.log(data)
+            console.log(metaData)
         }
         return (
             <div>
@@ -54,23 +44,27 @@ class Ticker extends React.Component {
                                     return (
                                         <tr className="mt-3 mb-3 bg-white">
                                             <th scope="row">{dat.cmc_rank}</th>
-                                            <td>{dat.name}</td>
+                                            <td><h5 className="font-weight-bold">{dat.name}</h5><span className="text-secondary">{" " + dat.symbol}</span></td>
                                             <td>{dat.quote.USD.price.toFixed(2) + '$'}</td>
-                                            <td>{dat.quote.USD.percent_change_1h.toFixed(2) + '%'}</td>
-                                            <td>{dat.quote.USD.percent_change_7d.toFixed(2) + '%'}</td>
+                                            <td>{dat.quote.USD.percent_change_1h > 0
+                                                ?
+                                                <span className="stonkGreen">{dat.quote.USD.percent_change_1h.toFixed(2) + '%'}</span>
+                                                :
+                                                <span className="text-danger">{dat.quote.USD.percent_change_1h.toFixed(2) + '%'}</span>
+                                            }
+                                            </td>
+                                            <td>{dat.quote.USD.percent_change_7d > 0
+                                                ?
+                                                <span className="stonkGreen">{dat.quote.USD.percent_change_7d.toFixed(2) + '%'}</span>
+                                                :
+                                                <span className="text-danger">{dat.quote.USD.percent_change_7d.toFixed(2) + '%'}</span>
+                                            }
+                                            </td>
                                         </tr>
                                     )
                                 })}
                             </tbody>
                         </table>
-                        {/* <div className="col">
-                                    <h4>{dat.name}</h4>
-                                    <h5>{dat.quote.USD.price.toFixed(2) + '$'}</h5>
-                                </div>
-                                <div className="col">
-                                    <h5>{'1hr ' + dat.quote.USD.percent_change_1h.toFixed(2) + '%'}</h5>
-                                    <h5>{'7d ' + dat.quote.USD.percent_change_7d.toFixed(2) + '%'}</h5>
-                                </div> */}
                     </div>
                 </div>
             </div>
@@ -79,11 +73,13 @@ class Ticker extends React.Component {
 }
 
 Ticker.propTypes = {
-    connectToApi: PropTypes.func.isRequired
+    connectToApi: PropTypes.func.isRequired,
+    getCoinMetaData: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
-    coinData: state.coinMarketCap.coinData
+    coinData: state.coinMarketCap.coinData,
+    coinMetaData: state.coinMarketCap.coinMetaData
 })
 
 export default connect(mapStateToProps, { connectToApi, getCoinMetaData })(Ticker);

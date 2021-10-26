@@ -15,21 +15,25 @@ const Balance = props => {
                 console.log(ex)
             }
             getData();
-        } 
+        }
     }, [library, metaMaskStatus])
 
     async function disconnect() {
         setMetaMaskStatus(true);
-            try {
-                setBalance(null)
-                deactivate();
-            } catch (ex) {
-                console.log(ex);
-            }
+        try {
+            setBalance(null)
+            deactivate();
+        } catch (ex) {
+            console.log(ex);
+        }
     }
 
     function getData() {
         if (library) {
+            library.eth.net.getId().then(data => {
+                let networkId = data;
+                console.log(networkId)
+            });
             library.eth.getBalance(account).then(result => {
                 console.log(result)
                 return result
@@ -43,23 +47,26 @@ const Balance = props => {
             })
         }
     }
+
     return (
         <div>
-            <div className="row text-center mt-3">
-                <h2>Account Balance</h2>
-                <h4 className="mt-2">{ethBalance ? ethBalance : <h5>Can't fetch account balance</h5>}</h4>
-            </div>
-            <div className="row mt-3 mb-3">
-                {active ? <span>Connected To <b className="walletFontSize">{account}</b></span> : <span>Not Connected</span>}
-            </div>
-            <div className="row text-center mt-3">
-                {active ? <span></span> : <button onClick={() => {setMetaMaskStatus(false)}} className="btn btn-outline-primary w-50 mx-auto">Connect To MetaMask</button>}
-            </div>
-            <div className="row mt-3">
-                {/* {active && <button onClick={getData()} className="btn btn-outline-primary w-50 ml-2 mx-auto">Get Data!</button>} */}
-            </div>
-            <div className="row mt-3">
-                {active && <button onClick={disconnect} className="btn btn-outline-danger w-50 mr-2 mx-auto">Disconnect</button>}
+            <div>
+                <div className="row text-center mt-3">
+                    <h2>Account Balance</h2>
+                    <h4 className="mt-2">{ethBalance ? ethBalance : <h5>Can't fetch account balance</h5>}</h4>
+                </div>
+                <div className="row mt-3 mb-3">
+                    {active ? <span>Connected To <b className="walletFontSize">{account}</b></span> : <span>Not Connected</span>}
+                </div>
+                <div className="row text-center mt-3">
+                    {active ? <span></span> : <button onClick={() => { setMetaMaskStatus(false) }} className="btn btn-outline-primary w-50 mx-auto">Connect To MetaMask</button>}
+                </div>
+                <div className="row mt-3">
+                    {/* {active && <button onClick={getData()} className="btn btn-outline-primary w-50 ml-2 mx-auto">Get Data!</button>} */}
+                </div>
+                <div className="row mt-3">
+                    {active && <button onClick={disconnect} className="btn btn-outline-danger w-50 mr-2 mx-auto">Disconnect</button>}
+                </div>
             </div>
         </div>
     )

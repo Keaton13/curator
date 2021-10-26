@@ -24,7 +24,7 @@ export const connectToApi = () => dispach => {
 }
 
 export const getCoinMetaData = () => dispach => {
-    fetch('https://cors-anywhere.herokuapp.com/https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/info', {
+    fetch('https://cors-anywhere.herokuapp.com/https://pro-api.coinmarketcap.com/v1/cryptocurrency/info', {
         method: 'GET',
         headers: {
             'X-CMC_PRO_API_KEY': '485fb1f7-77fa-4b36-863c-b6727a18c43d',
