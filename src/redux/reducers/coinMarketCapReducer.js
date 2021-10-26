@@ -2,7 +2,7 @@ import { CONNECT_TO_COINMARKETCAP_API } from '../actions/types'
 
 const initalState = {
     coinData: {
-        data: []
+        data: null
     }
 }
 
