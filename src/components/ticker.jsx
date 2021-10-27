@@ -17,6 +17,7 @@ class Ticker extends React.Component {
     render() {
         let data;
         let metaData;
+        let ids = []
         if (this.props.coinData.data) {
             data = this.props.coinData.data.data
             metaData = this.props.coinData.coinMetaData
@@ -39,8 +40,12 @@ class Ticker extends React.Component {
                                 </tr>
                             </thead>
                             <tbody>
-                                {data && data.map(dat => {
-                                    console.log(dat)
+                                {data && data.map(dat => {                                    ;
+                                    ids.push(dat.id)
+                                    if (ids.length === 100) {
+                                        console.log(ids)
+                                        this.props.getCoinMetaData(ids);
+                                    }
                                     return (
                                         <tr className="mt-3 mb-3 bg-white">
                                             <th scope="row">{dat.cmc_rank}</th>
@@ -74,7 +79,9 @@ class Ticker extends React.Component {
 
 Ticker.propTypes = {
     connectToApi: PropTypes.func.isRequired,
-    getCoinMetaData: PropTypes.func.isRequired
+    getCoinMetaData: PropTypes.func.isRequired,
+    coinData: PropTypes.object.isRequired,
+    coinMetaData: PropTypes.object.isRequired
 }
 
 const mapStateToProps = state => ({
