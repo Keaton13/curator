@@ -1,8 +1,12 @@
-import { CONNECT_TO_COINMARKETCAP_API } from '../actions/types'
+import { act } from '@testing-library/react';
+import { CONNECT_TO_COINMARKETCAP_API, GET_COIN_METADATA } from '../actions/types'
 
 const initalState = {
     coinData: {
-        data: []
+        data: null
+    },
+    coinMetaData: {
+        data: null
     }
 }
 
@@ -10,7 +14,15 @@ export default function (state = initalState, action) {
     switch (action.type) {
         case CONNECT_TO_COINMARKETCAP_API:
             return {
+                ...state,
                 coinData: {
+                    data: action.payload
+                }
+            }
+        case GET_COIN_METADATA:
+            return {
+                ...state,
+                coinMetaData: {
                     data: action.payload
                 }
             }

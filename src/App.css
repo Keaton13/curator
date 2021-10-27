@@ -44,6 +44,9 @@
 .walletFontSize {
   font-size: 3vw;
 }
+.stonkGreen {
+  color: #16c784
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
