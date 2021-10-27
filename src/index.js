@@ -6,6 +6,8 @@ import reportWebVitals from './reportWebVitals';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import { Web3ReactProvider } from '@web3-react/core'
 import Web3 from 'web3'
+import { Provider } from "react-redux"
+import { store } from './redux/store'
 
 function getLibrary(provider) {
   return new Web3(provider)
@@ -14,7 +16,9 @@ function getLibrary(provider) {
 ReactDOM.render(
   <React.StrictMode>
     <Web3ReactProvider getLibrary={getLibrary}>
-      <App />
+      <Provider store={store}>
+        <App />
+      </Provider>
     </Web3ReactProvider>
   </React.StrictMode>,
   document.getElementById('root')
