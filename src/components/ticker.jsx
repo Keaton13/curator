@@ -3,85 +3,95 @@ import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Header from './header';
 import { connectToApi, getCoinMetaData } from '../redux/actions/coinMarketCapAction';
+
 class Ticker extends React.Component {
     constructor() {
         super()
+
+        this.getCoinMetaDataFunction = this.getCoinMetaDataFunction.bind(this);
     }
 
-    componentDidMount() {
-        this.props.connectToApi();
-        // this.props.getCoinMetaData();
-        console.log('Connected')
+    async componentDidMount() {
+        try {
+            await this.props.connectToApi();
+        } catch (error) {
+            console.log(error)
+        }
+    }
+
+
+    async getCoinMetaDataFunction() {
+        if (this.props.coinData.data) {
+            let data = this.props.coinData.data;
+            data.sort((a, b) => {
+                return (a.id - b.id) || a.name.localeCompare(b.name)
+            })
+            console.log(data);
+            let ids = [];
+            for (let i = 0; i < data.length; i++) {
+                ids.push(data[i].id)
+            }
+            if (ids.length === 100) {
+                await this.props.getCoinMetaData(ids);
+            }
+        }
     }
 
     render() {
-        let data;
-        let metaData;
-        let ids = []
-        if (this.props.coinData.data) {
-            data = this.props.coinData.data.data
-            metaData = this.props.coinData.coinMetaData
-            data = data.splice(0, 100);
-            console.log(data)
-            console.log(metaData)
-        }
-        return (
-            <div>
+        if(this.props.coinData.data !== null){
+            let data = this.props.coinData.data;
+            return (
                 <div>
-                    <div className="row">
-                        <table className="table">
-                            <thead className="bg-dark text-white">
-                                <tr>
-                                    <th scope="col">#</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Price</th>
-                                    <th scope="col">1hr</th>
-                                    <th scope="col">7d</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                {data && data.map(dat => {                                    ;
-                                    ids.push(dat.id)
-                                    if (ids.length === 100) {
-                                        console.log(ids)
-                                        this.props.getCoinMetaData(ids);
-                                    }
-                                    return (
-                                        <tr className="mt-3 mb-3 bg-white">
-                                            <th scope="row">{dat.cmc_rank}</th>
-                                            <td><h5 className="font-weight-bold">{dat.name}</h5><span className="text-secondary">{" " + dat.symbol}</span></td>
-                                            <td>{dat.quote.USD.price.toFixed(2) + '$'}</td>
-                                            <td>{dat.quote.USD.percent_change_1h > 0
-                                                ?
-                                                <span className="stonkGreen">{dat.quote.USD.percent_change_1h.toFixed(2) + '%'}</span>
-                                                :
-                                                <span className="text-danger">{dat.quote.USD.percent_change_1h.toFixed(2) + '%'}</span>
-                                            }
-                                            </td>
-                                            <td>{dat.quote.USD.percent_change_7d > 0
-                                                ?
-                                                <span className="stonkGreen">{dat.quote.USD.percent_change_7d.toFixed(2) + '%'}</span>
-                                                :
-                                                <span className="text-danger">{dat.quote.USD.percent_change_7d.toFixed(2) + '%'}</span>
-                                            }
-                                            </td>
-                                        </tr>
-                                    )
-                                })}
-                            </tbody>
-                        </table>
+                    <div>
+                        <div className="row">
+                            <table className="table">
+                                <thead className="bg-dark text-white">
+                                    <tr>
+                                        <th scope="col">#</th>
+                                        <th scope="col">Name</th>
+                                        <th scope="col">Price</th>
+                                        <th scope="col">1hr</th>
+                                        <th scope="col">7d</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    {data && data.map(dat => {
+        
+                                        return (
+                                            <tr className="mt-3 mb-3 bg-white" key={dat.id}>
+                                                <th scope="row">{dat.cmc_rank}</th>
+                                                <td><h5 className="font-weight-bold">{dat.name}</h5><span className="text-secondary">{" " + dat.symbol}</span></td>
+                                                <td>{dat.quote.USD.price.toFixed(2) + '$'}</td>
+                                                <td>{dat.quote.USD.percent_change_1h > 0
+                                                    ?
+                                                    <span className="stonkGreen">{dat.quote.USD.percent_change_1h.toFixed(2) + '%'}</span>
+                                                    :
+                                                    <span className="text-danger">{dat.quote.USD.percent_change_1h.toFixed(2) + '%'}</span>
+                                                }
+                                                </td>
+                                                <td>{dat.quote.USD.percent_change_7d > 0
+                                                    ?
+                                                    <span className="stonkGreen">{dat.quote.USD.percent_change_7d.toFixed(2) + '%'}</span>
+                                                    :
+                                                    <span className="text-danger">{dat.quote.USD.percent_change_7d.toFixed(2) + '%'}</span>
+                                                }
+                                                </td>
+                                            </tr>
+                                        )
+                                    })}
+                                </tbody>
+                            </table>
+                        </div>
                     </div>
                 </div>
-            </div>
-        )
+            )
+        }
     }
 }
 
 Ticker.propTypes = {
     connectToApi: PropTypes.func.isRequired,
-    getCoinMetaData: PropTypes.func.isRequired,
-    coinData: PropTypes.object.isRequired,
-    coinMetaData: PropTypes.object.isRequired
+    getCoinMetaData: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({

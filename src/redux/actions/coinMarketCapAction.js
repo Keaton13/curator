@@ -17,6 +17,7 @@ export const connectToApi = () => dispach => {
             type: CONNECT_TO_COINMARKETCAP_API,
             payload: data.data
           });
+          return true;
         })
         .catch(err => {
           console.error(err);
@@ -37,22 +38,20 @@ export const getCoinMetaData = (data) => dispach => {
         method: 'GET',
         headers: {
             'X-CMC_PRO_API_KEY': '485fb1f7-77fa-4b36-863c-b6727a18c43d',
-          },
-        params: {
-            id: ids
-        }
+          }
       })
         .then(res => {
           console.log(res);
-          const data = res.json();
-          return data;
+          const result = res.json();
+          return result;
         })
-        .then(data => {
-          console.log(data)
+        .then(result => {
+          console.log(result)
           dispach({
             type: GET_COIN_METADATA,
-            payload: data.data
+            payload: result.data
           });
+          return Promise.resolve();
         })
         .catch(err => {
           console.error(err);
