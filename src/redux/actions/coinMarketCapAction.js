@@ -13,11 +13,15 @@ export const connectToApi = () => dispach => {
           return data;
         })
         .then(data => {
+          console.log(data);
+          return data
+        })
+        .then(data => {
           dispach({
             type: CONNECT_TO_COINMARKETCAP_API,
             payload: data.data
           });
-          return true;
+          return Promise.resolve(data);;
         })
         .catch(err => {
           console.error(err);

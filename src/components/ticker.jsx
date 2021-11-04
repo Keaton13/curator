@@ -2,18 +2,23 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Header from './header';
-import { connectToApi, getCoinMetaData } from '../redux/actions/coinMarketCapAction';
+import { getCoinMetaData } from '../redux/actions/coinMarketCapAction';
 
 class Ticker extends React.Component {
     constructor() {
         super()
-
+        this.state = {
+            data: []
+        }
         this.getCoinMetaDataFunction = this.getCoinMetaDataFunction.bind(this);
     }
 
-    async componentDidMount() {
+    componentDidMount() {
+        console.log('component did mount')
         try {
-            await this.props.connectToApi();
+            if(this.props.coinData.data){
+                this.getCoinMetaDataFunction()
+            }
         } catch (error) {
             console.log(error)
         }
@@ -38,6 +43,7 @@ class Ticker extends React.Component {
     }
 
     render() {
+        console.log(this.state)
         if(this.props.coinData.data !== null){
             let data = this.props.coinData.data;
             return (
@@ -85,12 +91,17 @@ class Ticker extends React.Component {
                     </div>
                 </div>
             )
+        } else {
+            return(
+                <div>
+                    <h1>Loading</h1>
+                </div>
+            )
         }
     }
 }
 
 Ticker.propTypes = {
-    connectToApi: PropTypes.func.isRequired,
     getCoinMetaData: PropTypes.func.isRequired
 }
 
@@ -99,4 +110,4 @@ const mapStateToProps = state => ({
     coinMetaData: state.coinMarketCap.coinMetaData
 })
 
-export default connect(mapStateToProps, { connectToApi, getCoinMetaData })(Ticker);
+export default connect(mapStateToProps, { getCoinMetaData })(Ticker);
