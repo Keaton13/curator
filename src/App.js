@@ -23,8 +23,8 @@ class App extends React.Component {
         <div className="App">
           <div className="container background-color-app">
             <Header />
-            <Ticker />
-            {/* <Balance/> */}
+            {/* <Ticker /> */}
+            <Balance/>
           </div>
         </div>
       );

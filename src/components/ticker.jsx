@@ -28,9 +28,9 @@ class Ticker extends React.Component {
     async getCoinMetaDataFunction() {
         if (this.props.coinData.data) {
             let data = this.props.coinData.data;
-            data.sort((a, b) => {
-                return (a.id - b.id) || a.name.localeCompare(b.name)
-            })
+            // data.sort((a, b) => {
+            //     return (a.id - b.id) || a.name.localeCompare(b.name)
+            // })
             console.log(data);
             let ids = [];
             for (let i = 0; i < data.length; i++) {
@@ -44,8 +44,10 @@ class Ticker extends React.Component {
 
     render() {
         console.log(this.state)
-        if(this.props.coinData.data !== null){
+        if(this.props.coinData.data !== null  && this.props.coinMetaData.data !== null){
             let data = this.props.coinData.data;
+            let metaData = this.props.coinMetaData.data;
+            let symbol;
             return (
                 <div>
                     <div>
@@ -62,7 +64,12 @@ class Ticker extends React.Component {
                                 </thead>
                                 <tbody>
                                     {data && data.map(dat => {
-        
+                                        for(let i=0; i<metaData.length; i++){
+                                            if(dat.id === metaData[i].id){
+                                                console.log(metaData[i])
+                                                // symbol = metaData[i].symbol
+                                            }
+                                        }
                                         return (
                                             <tr className="mt-3 mb-3 bg-white" key={dat.id}>
                                                 <th scope="row">{dat.cmc_rank}</th>
