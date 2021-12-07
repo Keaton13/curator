@@ -62,6 +62,8 @@ const Balance = props => {
             setNetworkName('Rinkbey')
         } else if (networkId === 5){
             setNetworkName('Goerli')
+        } else {
+            setNetworkName('Unknown Network Id')
         }
     }
 
