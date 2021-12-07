@@ -1,11 +1,13 @@
-import React, {useEffect} from 'react';
+import React, { useEffect } from 'react';
 import Logo from '../images/images.png'
+import { Link } from "react-router-dom";
+
 
 const Header = props => {
     const [dropDownStatus, setDropDownStatus] = React.useState('dropdown-menu mt-5');
 
     function handleDropdownClick() {
-        if(dropDownStatus === 'dropdown-menu mt-5'){
+        if (dropDownStatus === 'dropdown-menu mt-5') {
             setDropDownStatus('dropdown-menu show mt-5')
         } else {
             setDropDownStatus('dropdown-menu mt-5')
@@ -16,12 +18,12 @@ const Header = props => {
         <div className="row HeaderMaxHeight background-color-header">
             <div className="col-8">
                 <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle float-left" onClick={() => {handleDropdownClick()}} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        
+                    <button class="btn btn-secondary dropdown-toggle float-left" onClick={() => { handleDropdownClick() }} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+
                     </button>
                     <div class={dropDownStatus} aria-labelledby="dropdownMenuButton">
-                        <a class="dropdown-item" href="#">Balance</a>
-                        <a class="dropdown-item" href="#">Top Charts</a>
+                        <Link class="no-underline" to="/"><a class="dropdown-item">Balance</a></Link>
+                        <Link class="no-underline" to="ticker"><a class="dropdown-item">Ticker</a></Link>
                     </div>
                 </div>
                 <h1 className="mt-3 float-right-custom">Curator</h1>
