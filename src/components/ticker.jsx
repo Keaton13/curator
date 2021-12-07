@@ -16,8 +16,13 @@ class Ticker extends React.Component {
     componentDidMount() {
         console.log('component did mount')
         try {
-            if(this.props.coinData.data){
-                this.getCoinMetaDataFunction()
+            if (this.props.coinData.data) {
+                console.log(this.props.coinMetaData)
+                if (this.props.coinMetaData.data !== null) {
+                    console.log('Have Data Already NAM NAM NAM')
+                } else {
+                    this.getCoinMetaDataFunction()
+                }
             }
         } catch (error) {
             console.log(error)
@@ -44,7 +49,7 @@ class Ticker extends React.Component {
 
     render() {
         console.log(this.state)
-        if(this.props.coinData.data !== null  && this.props.coinMetaData.data !== null){
+        if (this.props.coinData.data !== null && this.props.coinMetaData.data !== null) {
             let data = this.props.coinData.data;
             let metaData = this.props.coinMetaData.data;
             let symbol;
@@ -64,8 +69,8 @@ class Ticker extends React.Component {
                                 </thead>
                                 <tbody>
                                     {data && data.map(dat => {
-                                        for(let i=0; i<metaData.length; i++){
-                                            if(dat.id === metaData[i].id){
+                                        for (let i = 0; i < metaData.length; i++) {
+                                            if (dat.id === metaData[i].id) {
                                                 console.log(metaData[i])
                                                 // symbol = metaData[i].symbol
                                             }
@@ -99,7 +104,7 @@ class Ticker extends React.Component {
                 </div>
             )
         } else {
-            return(
+            return (
                 <div>
                     <h1>Loading</h1>
                 </div>
