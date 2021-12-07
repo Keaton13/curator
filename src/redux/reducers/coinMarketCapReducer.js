@@ -1,4 +1,3 @@
-import { act } from '@testing-library/react';
 import { CONNECT_TO_COINMARKETCAP_API, GET_COIN_METADATA } from '../actions/types'
 
 const initalState = {
@@ -11,6 +10,7 @@ const initalState = {
 }
 
 export default function (state = initalState, action) {
+    console.log('test');
     switch (action.type) {
         case CONNECT_TO_COINMARKETCAP_API:
             return {
