@@ -3,6 +3,8 @@ import { injected } from './wallet/connectors';
 import { useWeb3React } from '@web3-react/core';
 
 const Balance = props => {
+    const [metaNetwork, setNetwork] = React.useState(null);
+    const [networkName, setNetworkName] = React.useState('test')
     const [ethBalance, setBalance] = React.useState(null);
     const [metaMaskStatus, setMetaMaskStatus] = React.useState(false);
     const { active, account, library, connector, activate, deactivate } = useWeb3React();
@@ -23,6 +25,7 @@ const Balance = props => {
         try {
             setBalance(null)
             deactivate();
+            setNetworkName(null)
         } catch (ex) {
             console.log(ex);
         }
@@ -32,7 +35,9 @@ const Balance = props => {
         if (library) {
             library.eth.net.getId().then(data => {
                 let networkId = data;
-                console.log(networkId)
+                setNetwork(networkId);
+                setNetworkId(networkId);
+                console.log(networkId);
             });
             library.eth.getBalance(account).then(result => {
                 console.log(result)
@@ -48,10 +53,26 @@ const Balance = props => {
         }
     }
 
+    function setNetworkId(networkId){
+        if(networkId === 1){
+            setNetworkName('Mainnet')
+        } else if (networkId === 3){
+            setNetworkName('Ropsten')
+        } else if (networkId === 4){
+            setNetworkName('Rinkbey')
+        } else if (networkId === 5){
+            setNetworkName('Goerli')
+        } else {
+            setNetworkName('Unknown Network Id')
+        }
+    }
+
     return (
         <div>
             <div>
                 <div className="row text-center mt-3">
+                    {/* {active ? <h2>Connected To {networkName && {networkName}}</h2> : <h3>do nothing</h3>} */}
+                    {active ? <h2>Connected To {networkName}</h2> : <h2>Not Connected to network</h2>}
                     <h2>Account Balance</h2>
                     <h4 className="mt-2">{ethBalance ? ethBalance : <h5>Can't fetch account balance</h5>}</h4>
                 </div>

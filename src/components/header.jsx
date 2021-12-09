@@ -17,13 +17,13 @@ const Header = props => {
     return (
         <div className="row HeaderMaxHeight background-color-header">
             <div className="col-8">
-                <div class="dropdown">
-                    <button class="btn btn-secondary dropdown-toggle float-left" onClick={() => { handleDropdownClick() }} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                <div className="dropdown">
+                    <button className="btn btn-secondary dropdown-toggle float-left" onClick={() => { handleDropdownClick() }} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                     </button>
-                    <div class={dropDownStatus} aria-labelledby="dropdownMenuButton">
-                        <Link class="no-underline" to="/"><a class="dropdown-item">Balance</a></Link>
-                        <Link class="no-underline" to="ticker"><a class="dropdown-item">Ticker</a></Link>
+                    <div className={dropDownStatus} aria-labelledby="dropdownMenuButton">
+                        <Link className="no-underline" to="/" onClick={() => { handleDropdownClick() }}><a className="dropdown-item">Balance</a></Link>
+                        <Link className="no-underline" to="ticker" onClick={() => { handleDropdownClick() }}><a className="dropdown-item">Ticker</a></Link>
                     </div>
                 </div>
                 <h1 className="mt-3 float-right-custom">Curator</h1>
