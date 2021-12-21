@@ -80,10 +80,7 @@ class Ticker extends React.Component {
                 <div className="modal-dialog modal-dialog-centered" role="document">
                     <div className="modal-content">
                         <div className="modal-header">
-                            <h5 className="modal-title" id="exampleModalLongTitle">{modalData.name + " " + modalData.symbol}</h5>
-                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                <span aria-hidden="true">&times;</span>
-                            </button>
+                            <h5 className="modal-title m-auto" id="exampleModalLongTitle">{modalData.name + " " + modalData.symbol}</h5>
                         </div>
                         <div className="modal-body">
                             <div className="container">
@@ -94,7 +91,7 @@ class Ticker extends React.Component {
                                 </div>
                                 <div className="row">
                                     {/* <h4>{modalData.symbol + ' Stats'}</h4> */}
-                                    <div className="col-4 p-0">
+                                    <div className="col-5 p-0">
                                         <div className="row">
                                             <h5>Price</h5>
                                         </div>
@@ -131,9 +128,9 @@ class Ticker extends React.Component {
 
                                         </div>
                                     </div>
-                                    <div className="col-8">
+                                    <div className="col-7">
                                         <div className="row">
-                                            <h5>{modalData.quote.USD.price.toLocaleString(undefined, {maximumFractionDigits: 2 })}</h5>
+                                            <h5>{modalData.quote.USD.price.toLocaleString(undefined, {maximumFractionDigits: 2 }) + "$"}</h5>
                                         </div>
                                         <div className="row">
                                             <h5>{modalData.quote.USD.volume_24h.toLocaleString(undefined, { maximumFractionDigits: 2 }) + '$'}</h5>
@@ -147,31 +144,31 @@ class Ticker extends React.Component {
                                         </div>
                                         <div className="row">
                                             {modalData.quote.USD.percent_change_1h > 0
-                                            ? <h5 className="stonkGreen">{modalData.quote.USD.percent_change_1h.toFixed(2) + '%'}</h5>
+                                            ? <h5 className="stonkGreen">{"+" + modalData.quote.USD.percent_change_1h.toFixed(2) + '%'}</h5>
                                             : <h5 className="text-danger">{modalData.quote.USD.percent_change_1h.toFixed(2) + '%'}</h5>
                                             }
                                         </div>
                                         <div className="row">
                                             {modalData.quote.USD.percent_change_24h > 0
-                                            ? <h5 className="stonkGreen">{modalData.quote.USD.percent_change_24h.toFixed(2) + '%'}</h5>
+                                            ? <h5 className="stonkGreen">{"+" + modalData.quote.USD.percent_change_24h.toFixed(2) + '%'}</h5>
                                             : <h5 className="text-danger">{modalData.quote.USD.percent_change_24h.toFixed(2) + '%'}</h5>
                                             }
                                         </div>
                                         <div className="row">
                                             {modalData.quote.USD.percent_change_7d > 0
-                                            ? <h5 className="stonkGreen">{modalData.quote.USD.percent_change_7d.toFixed(2) + '%'}</h5>
+                                            ? <h5 className="stonkGreen">{"+" + modalData.quote.USD.percent_change_7d.toFixed(2) + '%'}</h5>
                                             : <h5 className="text-danger">{modalData.quote.USD.percent_change_7d.toFixed(2) + '%'}</h5>
                                             }
                                         </div>
                                         <div className="row">
                                             {modalData.quote.USD.percent_change_30d > 0
-                                            ? <h5 className="stonkGreen">{modalData.quote.USD.percent_change_30d.toFixed(2) + '%'}</h5>
+                                            ? <h5 className="stonkGreen">{"+" + modalData.quote.USD.percent_change_30d.toFixed(2) + '%'}</h5>
                                             : <h5 className="text-danger">{modalData.quote.USD.percent_change_30d.toFixed(2) + '%'}</h5>
                                             }
                                         </div>
                                         <div className="row">
                                             {modalData.quote.USD.percent_change_60d > 0
-                                            ? <h5 className="stonkGreen">{modalData.quote.USD.percent_change_60d.toFixed(2) + '%'}</h5>
+                                            ? <h5 className="stonkGreen">{"+" + modalData.quote.USD.percent_change_60d.toFixed(2) + '%'}</h5>
                                             : <h5 className="text-danger">{modalData.quote.USD.percent_change_60d.toFixed(2) + '%'}</h5>
                                             }
                                         </div>
@@ -180,7 +177,7 @@ class Ticker extends React.Component {
                             </div>
                         </div>
                         <div className="modal-footer">
-                            <button type="button" className="btn btn-secondary" data-dismiss="modal" onClick={this.handleModal}>Close</button>
+                            <button type="button" className="btn btn-secondary m-auto" data-dismiss="modal" onClick={this.handleModal}>Close</button>
                         </div>
                     </div>
                 </div>

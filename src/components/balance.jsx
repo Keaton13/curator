@@ -74,7 +74,7 @@ const Balance = props => {
                     {/* {active ? <h2>Connected To {networkName && {networkName}}</h2> : <h3>do nothing</h3>} */}
                     {active ? <h2>Connected To {networkName}</h2> : <h2>Not Connected to network</h2>}
                     <h2>Account Balance</h2>
-                    <h4 className="mt-2">{ethBalance ? ethBalance : <h5>Can't fetch account balance</h5>}</h4>
+                    <h4 className="mt-2">{ethBalance ? ethBalance + " ETH": <h5>Can't fetch account balance</h5>}</h4>
                 </div>
                 <div className="row mt-3 mb-3">
                     {active ? <span>Connected To <b className="walletFontSize">{account}</b></span> : <span>Not Connected</span>}
