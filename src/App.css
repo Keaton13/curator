@@ -27,6 +27,24 @@
     outline: 0;
 }
 
+.headerLinks {
+  display: flex;
+  align-items: center;
+}
+.headerLinkColor {
+  color: black; 
+}
+.headerText {
+  text-align: left;
+  margin-left: 3%;
+}
+.rotateImage {
+  -webkit-transform:rotate(-90deg);
+  -moz-transform: rotate(-90deg);
+  -ms-transform: rotate(-90deg);
+  -o-transform: rotate(-90deg);
+  transform: rotate(-90deg);
+}
 @media (prefers-reduced-motion: no-preference) {
   .App-logo {
     animation: App-logo-spin infinite 20s linear;
