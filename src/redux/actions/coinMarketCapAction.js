@@ -21,7 +21,7 @@ export const connectToApi = () => dispach => {
             type: CONNECT_TO_COINMARKETCAP_API,
             payload: data.data
           });
-          return Promise.resolve(data);;
+          // return Promise.resolve(data);;
         })
         .catch(err => {
           console.error(err);
@@ -50,7 +50,7 @@ export const getCoinMetaData = (data) => dispach => {
           return result;
         })
         .then(result => {
-          console.log(result)
+          console.log(result.data[1])
           dispach({
             type: GET_COIN_METADATA,
             payload: result.data
