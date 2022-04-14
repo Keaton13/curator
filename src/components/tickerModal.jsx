@@ -32,7 +32,6 @@ const TickerModal = (props) => {
                   <div className="col"></div>
                 </div>
                 <div className="row">
-                  {/* <h4>{modalData.symbol + ' Stats'}</h4> */}
                   <div className="col-5 p-0">
                     <div className="row">
                       <h5>Price</h5>

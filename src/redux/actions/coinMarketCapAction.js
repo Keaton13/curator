@@ -8,12 +8,10 @@ export const connectToApi = () => dispach => {
           }
       })
         .then(res => {
-          console.log(res);
           const data = res.json();
           return data;
         })
         .then(data => {
-          console.log(data);
           return data
         })
         .then(data => {
@@ -45,12 +43,10 @@ export const getCoinMetaData = (data) => dispach => {
           }
       })
         .then(res => {
-          console.log(res);
           const result = res.json();
           return result;
         })
         .then(result => {
-          console.log(result.data[1])
           dispach({
             type: GET_COIN_METADATA,
             payload: result.data

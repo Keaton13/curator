@@ -1,7 +1,6 @@
 import React from "react";
 import PropTypes from "prop-types";
 import { connect } from "react-redux";
-import Header from "./header";
 import TickerModal from "./tickerModal";
 import { getCoinMetaData } from "../redux/actions/coinMarketCapAction";
 
@@ -13,7 +12,7 @@ class Ticker extends React.Component {
       modal: {
         status: "modal fade",
         data: null,
-        logoData: null
+        logoData: null,
       },
     };
     this.getCoinMetaDataFunction = this.getCoinMetaDataFunction.bind(this);
@@ -21,10 +20,8 @@ class Ticker extends React.Component {
   }
 
   componentDidMount() {
-    console.log("component did mount");
     try {
       if (this.props.coinData.data) {
-        console.log(this.props.coinMetaData);
         if (this.props.coinMetaData.data !== null) {
           console.log("Have Data Already NAM NAM NAM");
         } else {
@@ -42,7 +39,6 @@ class Ticker extends React.Component {
       // data.sort((a, b) => {
       //     return (a.id - b.id) || a.name.localeCompare(b.name)
       // })
-      console.log(data);
       let ids = [];
       for (let i = 0; i < data.length; i++) {
         ids.push(data[i].id);
@@ -59,7 +55,7 @@ class Ticker extends React.Component {
         modal: {
           status: "modal fade",
           data: null,
-          logoData: null
+          logoData: null,
         },
       });
     } else {
@@ -67,7 +63,7 @@ class Ticker extends React.Component {
         modal: {
           status: "modal2",
           data: id,
-          logoData: logoId
+          logoData: logoId,
         },
       });
     }
@@ -81,17 +77,13 @@ class Ticker extends React.Component {
     ) {
       let data = this.props.coinData.data;
       let metaData = this.props.coinMetaData.data;
-      let symbol;
       let modalData = this.state.modal;
       return (
         <div>
           <div>
             <div className="row">
               {this.state.modal.status == "modal2" && (
-                <TickerModal
-                  modal={modalData}
-                  handleModal={this.handleModal}
-                />
+                <TickerModal modal={modalData} handleModal={this.handleModal} />
               )}
               <table className="table table-layout">
                 <thead className="bg-dark text-white">
@@ -107,11 +99,6 @@ class Ticker extends React.Component {
                   {data &&
                     data.map((dat) => {
                       let logo = metaData[dat.id].logo;
-                      // if (dat.id === metaData[i].id) {
-                      //     console.log(metaData[i])
-                      //     // symbol = metaData[i].symbol
-                      // }
-
                       return (
                         <tr
                           className="mt-3 mb-3 bg-white"

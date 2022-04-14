@@ -10,7 +10,6 @@ const initalState = {
 }
 
 export default function (state = initalState, action) {
-    console.log('test');
     switch (action.type) {
         case CONNECT_TO_COINMARKETCAP_API:
             return {
