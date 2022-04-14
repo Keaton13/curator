@@ -67,6 +67,12 @@
 .stonkGreen {
   color: #16c784
 }
+.logoMaxWidth {
+  max-width: 15%;
+}
+.table-layout {
+  table-layout: fixed;
+}
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);

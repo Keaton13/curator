@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React from 'react';
 import Logo from '../images/images.png'
 import { Link } from "react-router-dom";
 
@@ -18,7 +18,7 @@ const Header = props => {
         <div className="row HeaderMaxHeight background-color-header">
             <div className="col-4">
                 <div className="dropdown">
-                    <button className="btn btn-secondary dropdown-toggle float-left" onClick={() => { handleDropdownClick() }} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    <button className="btn btn-secondary mt-3 dropdown-toggle float-left" onClick={() => { handleDropdownClick() }} type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
 
                     </button>
                     <div className={dropDownStatus} aria-labelledby="dropdownMenuButton">
@@ -28,10 +28,10 @@ const Header = props => {
                 </div>
             </div>
             <div className="col-4">
-                <h1 className="mt-3 float-right-custom">Curator</h1>
+                <h1 className="mt-3 text-center">Curator</h1>
             </div>
             <div className="col-4">
-                <img src={Logo} className="h-25 ml-3" />
+                <img src={Logo} alt="" className="h-25 ml-3" />
             </div>
         </div>
     )
