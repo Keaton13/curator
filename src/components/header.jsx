@@ -3,7 +3,7 @@ import Logo from '../images/images.png'
 import { Link } from "react-router-dom";
 
 
-const Header = props => {
+const Header = () => {
     const [dropDownStatus, setDropDownStatus] = React.useState('dropdown-menu mt-5');
 
     function handleDropdownClick() {
