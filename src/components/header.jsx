@@ -28,7 +28,7 @@ const Header = props => {
                 </div>
             </div>
             <div className="col-4">
-                <h1 className="mt-3 text-center">Curator</h1>
+                <h1 className="mt-2 text-center">Curator</h1>
             </div>
             <div className="col-4">
                 <img src={Logo} alt="" className="h-25 ml-3" />

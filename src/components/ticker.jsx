@@ -54,7 +54,6 @@ class Ticker extends React.Component {
   }
 
   handleModal(id, logoId) {
-    console.log(id);
     if (this.state.modal.status === "modal2") {
       this.setState({
         modal: {
