@@ -73,6 +73,10 @@
   margin: 0px 24px;
   background: linear-gradient(90deg, #02aab0 0%, #00cdac 100%);
 }
+.cardImage {
+  float: left;
+  margin-left: 2rem;
+}
 .min-width100 {
   min-width: 100%;
 }
