@@ -1,6 +1,7 @@
 import React from "react";
 import Logo from "../images/images.png";
 import Gear from "../images/gear.png";
+import Bell from '../images/bell-icon.png'
 import { Link } from "react-router-dom";
 
 const Header = () => {
@@ -17,8 +18,12 @@ const Header = () => {
 
   return (
     <div className="row HeaderMaxHeight background-color-header">
-      <div className="col-4">
-        <img src={Logo} alt="" className="h-25 ml-3 float-left rotateImage" />
+      <div className="col-4 headerHeightClass">
+        <img
+          src={Logo}
+          alt=""
+          className="headerLogoWidth ml-3 float-left rotateImage"
+        />
         <h1 className="mt-2 w-50 float-left headerText">Curator</h1>
         {/* <div className="dropdown">
           <button
@@ -54,19 +59,19 @@ const Header = () => {
           </div>
         </div> */}
       </div>
-      <div className="col-4">
-        <div className="row h-25 headerLinks">
+      <div className="col-4 headerHeightClass">
+        <div className="row h-100 headerLinks headerFont">
           <div className="col-4">
             <Link className="no-underline w-50 headerLinkColor" to="/">
               Balance
             </Link>
           </div>
-          <div className="col-4">
+          <div className="col-4 headerHeightClass">
             <Link className="no-underline w-50 headerLinkColor" to="ticker">
               Ticker
             </Link>
           </div>
-          <div className="col-4">
+          <div className="col-4 headerHeightClass">
             <Link className="no-underline w-50 headerLinkColor" to="ticker">
               NFT's
             </Link>
@@ -74,13 +79,15 @@ const Header = () => {
         </div>
       </div>
       <div className="col-4">
-        <div className="row h-25 headerLinks">
+        <div className="row h-100 headerLinks">
           <div className="col-3"></div>
           <div className="col-3"></div>
           <div className="col-3">
-              <img src={Gear} className="w-25"/>
+            <img src={Gear} className="w-25" />
           </div>
-          <div className="col-3"></div>
+          <div className="col-3">
+            <img src={Bell} className="w-50 float-left" />
+          </div>
         </div>
       </div>
     </div>

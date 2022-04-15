@@ -12,18 +12,18 @@ import { connectToApi } from './redux/actions/coinMarketCapAction';
 class App extends React.Component {
   componentDidMount() {
     try {
-      // this.props.connectToApi()
+      this.props.connectToApi()
     } catch (error) {
       console.log(error)
     }
   }
 
   render() {
-    if (this.props.coinData.data == null) {
+    if (this.props.coinData.data !== null) {
       return (
         <HashRouter basename={process.env.PUBLIC_URL}>
           <div className="App">
-            <div className="container background-color-app">
+            <div className="container background-color-app min-width100">
               <Header />
               <Routes>
                 <Route path="/" element={<Balance />} />
