@@ -1,26 +1,24 @@
-import React from 'react';
-import ReactDOM from 'react-dom';
-import './index.css';
-import App from './App';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Web3ReactProvider } from '@web3-react/core'
-import Web3 from 'web3'
-import { Provider } from "react-redux"
-import { store } from './redux/store'
-
-function getLibrary(provider) {
-  return new Web3(provider)
-}
+import React from "react";
+import ReactDOM from "react-dom";
+import "./index.css";
+import App from "./App";
+import "bootstrap/dist/css/bootstrap.min.css";
+import { Provider } from "react-redux";
+import { store } from "./redux/store";
+import { MoralisProvider } from "react-moralis";
 
 ReactDOM.render(
   <React.StrictMode>
-    <Web3ReactProvider getLibrary={getLibrary}>
+    <MoralisProvider
+      serverUrl="https://8ijwchvccykv.usemoralis.com:2053/server"
+      appId="oUmC5CsrJ0lqKs6FkZkeLkNFPJAo5EMl3xPI0tIP"
+    >
       <Provider store={store}>
-          <App />
+        <App />
       </Provider>
-    </Web3ReactProvider>
+    </MoralisProvider>
   </React.StrictMode>,
-  document.getElementById('root')
+  document.getElementById("root")
 );
 
 // If you want to start measuring performance in your app, pass a function
