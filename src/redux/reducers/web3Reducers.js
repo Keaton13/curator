@@ -1,10 +1,12 @@
-import { SAVE_USER_TRANSACTIONS } from "../actions/types";
+import { SAVE_USER_TRANSACTIONS, SAVE_USER_WALLET_INFO } from "../actions/types";
 
 const initalState = {
     transactions: {
         data: null
     },
-    totalGas: null
+    transactionData: {
+        data: null
+    }
 }
 
 export default function (state = initalState, action) {
@@ -12,7 +14,16 @@ export default function (state = initalState, action) {
         case SAVE_USER_TRANSACTIONS:
             return {
                 ...state,
-                totalGas: action.payload
+                transactionData: {
+                    data: action.payload
+                }
+            }
+        case SAVE_USER_WALLET_INFO:
+            return {
+                ...state,
+                transactions: {
+                    data: action.payload
+                }
             }
             default: 
                 return state;

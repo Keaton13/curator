@@ -29,7 +29,7 @@ const Balance = (props) => {
           console.log(user.get("ethAddress"));
         })
         .then(() => {
-          // getBalances();
+          getBalances();
         })
         .catch(function (error) {
           console.log(error);

@@ -79,6 +79,9 @@
 .cardAddressFontSize {
   font-size: .75rem;
 }
+.cardSymbolWidth {
+  max-width: 26.49px;
+}
 .min-width100 {
   min-width: 100%;
 }

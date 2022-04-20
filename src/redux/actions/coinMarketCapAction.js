@@ -35,7 +35,6 @@ export const getCoinMetaData = (data) => dispach => {
             ids = ids + data[i] + ","
         }
     }
-    console.log(ids)
     fetch(`https://cors-anywhere.herokuapp.com/https://pro-api.coinmarketcap.com/v1/cryptocurrency/info?id=${ids}`, {
         method: 'GET',
         headers: {
