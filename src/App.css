@@ -53,7 +53,6 @@
   align-items: flex-start;
   padding: 0px;
 
-  position: absolute;
   height: 220px;
   left: 13%;
   right: 224px;
@@ -79,6 +78,9 @@
 }
 .cardAddressFontSize {
   font-size: .75rem;
+}
+.cardSymbolWidth {
+  max-width: 26.49px;
 }
 .min-width100 {
   min-width: 100%;
@@ -123,7 +125,7 @@
   font-family: cursive;
 }
 .background-color-app {
-  background: radial-gradient(67.22% 50% at 50% 50%, rgba(51, 231, 255, 0.15) 0%, rgba(245, 228, 255, 0) 100%);
+  background: radial-gradient(67.22% 50% at 50% 50%, rgb(51 231 255 / 37%) 0%, rgb(245 228 255 / 52%) 100%);
   opacity: 0.9;
 }
 .walletFontSize {

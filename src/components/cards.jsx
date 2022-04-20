@@ -5,18 +5,11 @@ import Eth from "../images/eth.png";
 import Chip from "../images/chip.png";
 
 const Cards = (props) => {
-  const symbols = useSelector((state) => state);
-
-  const { user, isAuthenticated, account } = useMoralis();
-  const { fetchERC20Transfers, data, error, isLoading, isFetching } =
-    useERC20Transfers();
-
-    useEffect(() => {
-      fetchERC20Transfers();
-    })
+  const transactionData = useSelector((state) => state.web3Reducer.transactionData.data);
+  const { user, isAuthenticated, Moralis, account } = useMoralis();
 
   return (
-    <div className="row cardLayout mt-3">
+    <div className="row cardLayout mt-3 w-75 mx-auto">
       <div className="col-4">
         <div className="card">
           <div className="row mt-3 ml-3">
@@ -60,10 +53,86 @@ const Cards = (props) => {
         </div>
       </div>
       <div className="col-4">
-        <div className="card"></div>
+        <div className="card">
+          <div className="row mt-3 ml-3">
+            <div className="col-8">
+              <img src={Eth} className="w-25 cardImage cardSymbolWidth" />
+              <h5 className="text-white">Total Gas Spent</h5>
+            </div>
+            <div className="col-4">
+              <div className="float-left">
+                <img src={Chip} className="w-50" />
+              </div>
+            </div>
+          </div>
+          <div className="row h-50 headerLinks">
+            <div className="col">
+              {isAuthenticated ? (
+                <h2 className="text-white text-align-left mgl-1">
+                  {transactionData !== null && Moralis.Units.FromWei(transactionData.totalGas)}
+                </h2>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
+          <div className="row">
+            <div className="col cardAddressFontSize">
+              <p className="text-white text-align-left mb-0" id="cardAddress">
+                Wallet Address:
+              </p>
+              {isAuthenticated ? (
+                <p className="text-white">{user.get("ethAddress")}</p>
+              ) : (
+                <p></p>
+              )}
+            </div>
+            {/* <div className="col-3">
+                <h5 className="float-left">Visa</h5>
+            </div> */}
+          </div>
+        </div>
       </div>
       <div className="col-4">
-        <div className="card"></div>
+        <div className="card">
+          <div className="row mt-3 ml-3">
+            <div className="col-8">
+              <img src={Eth} className="w-25 cardImage cardSymbolWidth" />
+              <h5 className="text-white">Total Transfered</h5>
+            </div>
+            <div className="col-4">
+              <div className="float-left">
+                <img src={Chip} className="w-50" />
+              </div>
+            </div>
+          </div>
+          <div className="row h-50 headerLinks">
+            <div className="col">
+              {isAuthenticated ? (
+                <h2 className="text-white text-align-left mgl-1">
+                  {transactionData !== null && Moralis.Units.FromWei(transactionData.totalEthSent)}
+                </h2>
+              ) : (
+                ""
+              )}
+            </div>
+          </div>
+          <div className="row">
+            <div className="col cardAddressFontSize">
+              <p className="text-white text-align-left mb-0" id="cardAddress">
+                Wallet Address:
+              </p>
+              {isAuthenticated ? (
+                <p className="text-white">{user.get("ethAddress")}</p>
+              ) : (
+                <p></p>
+              )}
+            </div>
+            {/* <div className="col-3">
+                <h5 className="float-left">Visa</h5>
+            </div> */}
+          </div>
+        </div>
       </div>
     </div>
   );
