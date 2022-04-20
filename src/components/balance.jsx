@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import Cards from "./cards";
+import Transactions from "./transactions";
 import { useMoralis, useNativeBalance } from "react-moralis";
 
 const Balance = (props) => {
@@ -28,7 +29,7 @@ const Balance = (props) => {
           console.log(user.get("ethAddress"));
         })
         .then(() => {
-          getBalances();
+          // getBalances();
         })
         .catch(function (error) {
           console.log(error);
@@ -81,6 +82,7 @@ const Balance = (props) => {
         <div className="col-2 h-100"></div>
       </div>
       <Cards balance={balance} />
+      <Transactions />
     </div>
   );
 };

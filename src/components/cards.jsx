@@ -8,15 +8,9 @@ const Cards = (props) => {
   const symbols = useSelector((state) => state);
 
   const { user, isAuthenticated, account } = useMoralis();
-  const { fetchERC20Transfers, data, error, isLoading, isFetching } =
-    useERC20Transfers();
-
-    useEffect(() => {
-      fetchERC20Transfers();
-    })
 
   return (
-    <div className="row cardLayout mt-3">
+    <div className="row cardLayout mt-3 w-75 mx-auto">
       <div className="col-4">
         <div className="card">
           <div className="row mt-3 ml-3">
