@@ -6,6 +6,7 @@ import { Route, Routes, HashRouter, } from 'react-router-dom';
 import Header from '../src/components/header'
 import Balance from './components/balance';
 import Ticker from './components/ticker';
+import Nft from './components/nft';
 import { connectToApi } from './redux/actions/coinMarketCapAction';
 
 
@@ -28,6 +29,7 @@ class App extends React.Component {
               <Routes>
                 <Route path="/" element={<Balance />} />
                 <Route path="ticker" element={<Ticker />} />
+                <Route path="nft" element={<Nft />} />
               </Routes>
             </div>
           </div>

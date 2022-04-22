@@ -72,7 +72,7 @@ const Header = () => {
             </Link>
           </div>
           <div className="col-4 headerHeightClass">
-            <Link className="no-underline w-50 headerLinkColor" to="ticker">
+            <Link className="no-underline w-50 headerLinkColor" to="nft">
               NFT's
             </Link>
           </div>

@@ -46,9 +46,6 @@ const Cards = (props) => {
                 <p></p>
               )}
             </div>
-            {/* <div className="col-3">
-                <h5 className="float-left">Visa</h5>
-            </div> */}
           </div>
         </div>
       </div>
@@ -87,9 +84,6 @@ const Cards = (props) => {
                 <p></p>
               )}
             </div>
-            {/* <div className="col-3">
-                <h5 className="float-left">Visa</h5>
-            </div> */}
           </div>
         </div>
       </div>
@@ -128,9 +122,6 @@ const Cards = (props) => {
                 <p></p>
               )}
             </div>
-            {/* <div className="col-3">
-                <h5 className="float-left">Visa</h5>
-            </div> */}
           </div>
         </div>
       </div>
