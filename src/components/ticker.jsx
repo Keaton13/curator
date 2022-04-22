@@ -36,9 +36,6 @@ class Ticker extends React.Component {
   async getCoinMetaDataFunction() {
     if (this.props.coinData.data) {
       let data = this.props.coinData.data;
-      // data.sort((a, b) => {
-      //     return (a.id - b.id) || a.name.localeCompare(b.name)
-      // })
       let ids = [];
       for (let i = 0; i < data.length; i++) {
         ids.push(data[i].id);

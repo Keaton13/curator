@@ -25,8 +25,8 @@ const Balance = (props) => {
     if (!isAuthenticated) {
       await authenticate({ signingMessage: "Log in using Moralis" })
         .then(function (user) {
-          console.log("logged in user:", user);
-          console.log(user.get("ethAddress"));
+          // console.log("logged in user:", user);
+          // console.log(user.get("ethAddress"));
         })
         .then(() => {
           getBalances();
@@ -42,10 +42,6 @@ const Balance = (props) => {
     await logout();
     console.log("logged out");
   };
-
-  // const [networkName, setNetworkName] = React.useState("test");
-  // const [ethBalance, setBalance] = React.useState(null);
-  // const [metaMaskStatus, setMetaMaskStatus] = React.useState(false);
 
   return (
     <div className="container min-width100">
