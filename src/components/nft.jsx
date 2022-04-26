@@ -51,9 +51,10 @@ const Nft = () => {
           <div className="row">
             {nftMetaData !== null &&
               nftMetaData.map((nft) => {
+                // console.log(nftMetaData)
                 let metaData = JSON.parse(nft.metadata);
                 return (
-                  <div className="col-3 mt-3 w-25 mb-4">
+                  <div className="col-3 mt-3 mb-4">
                     <div className="container nftDisplayBackground">
                       <div className="row">
                         <div className="col">
@@ -62,10 +63,10 @@ const Nft = () => {
                       </div>
                       <div className="row mt-3 nftInfoDisplayHeight">
                         <div className="col-8">
-                          <div className="row">
-                            <h5>Name</h5>
+                          <div className="row text-align-left">
+                            <h5>{nft.name}</h5>
+                            <h5>{"#"+nft.token_id}</h5>
                           </div>
-                          <h5>{metaData.name}</h5>
                         </div>
                         <div className="col-4"></div>
                       </div>
