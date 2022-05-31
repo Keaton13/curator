@@ -1,10 +1,27 @@
 import React from "react";
 import Logo from "../images/images.png";
 import Gear from "../images/gear.png";
-import Bell from '../images/bell-icon.png'
+import Bell from "../images/bell-icon.png";
 import { Link } from "react-router-dom";
+import { useMoralis } from "react-moralis";
 
 const Header = () => {
+  const { authenticate, isAuthenticated, user, logout } = useMoralis();
+
+  const login = async () => {
+    if (!isAuthenticated) {
+      await authenticate({ signingMessage: "Log in using Moralis" }).catch(
+        function (error) {
+          console.log(error);
+        }
+      );
+    } else {
+    }
+  };
+
+  const logOut = async () => {
+    await logout();
+  };
   // const [dropDownStatus, setDropDownStatus] =
   //   React.useState("dropdown-menu mt-5");
 
@@ -81,12 +98,28 @@ const Header = () => {
       <div className="col-4">
         <div className="row h-100 headerLinks">
           <div className="col-3"></div>
-          <div className="col-3"></div>
           <div className="col-3">
-            <img src={Gear} alt='Gear' className="w-25" />
+            {!isAuthenticated ? (
+              <button
+                className="btn btn-outline-primary float-left"
+                onClick={login}
+              >
+                LogIn
+              </button>
+            ) : (
+              <button
+                className="btn btn-outline-primary float-left"
+                onClick={logOut}
+              >
+                LogOut
+              </button>
+            )}
           </div>
           <div className="col-3">
-            <img src={Bell} alt='Bell' className="w-50 float-left" />
+            <img src={Gear} alt="Gear" className="w-25" />
+          </div>
+          <div className="col-3">
+            <img src={Bell} alt="Bell" className="w-50 float-left" />
           </div>
         </div>
       </div>
