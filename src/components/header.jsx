@@ -5,16 +5,16 @@ import Bell from '../images/bell-icon.png'
 import { Link } from "react-router-dom";
 
 const Header = () => {
-  const [dropDownStatus, setDropDownStatus] =
-    React.useState("dropdown-menu mt-5");
+  // const [dropDownStatus, setDropDownStatus] =
+  //   React.useState("dropdown-menu mt-5");
 
-  function handleDropdownClick() {
-    if (dropDownStatus === "dropdown-menu mt-5") {
-      setDropDownStatus("dropdown-menu show mt-5");
-    } else {
-      setDropDownStatus("dropdown-menu mt-5");
-    }
-  }
+  // function handleDropdownClick() {
+  //   if (dropDownStatus === "dropdown-menu mt-5") {
+  //     setDropDownStatus("dropdown-menu show mt-5");
+  //   } else {
+  //     setDropDownStatus("dropdown-menu mt-5");
+  //   }
+  // }
 
   return (
     <div className="row HeaderMaxHeight background-color-header">
@@ -83,10 +83,10 @@ const Header = () => {
           <div className="col-3"></div>
           <div className="col-3"></div>
           <div className="col-3">
-            <img src={Gear} className="w-25" />
+            <img src={Gear} alt='Gear' className="w-25" />
           </div>
           <div className="col-3">
-            <img src={Bell} className="w-50 float-left" />
+            <img src={Bell} alt='Bell' className="w-50 float-left" />
           </div>
         </div>
       </div>

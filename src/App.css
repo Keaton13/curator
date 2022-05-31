@@ -85,7 +85,10 @@
 .min-width100 {
   min-width: 100%;
 }
-
+.min-Height100 {
+  min-height: 100vh;
+}
+ 
 .rotateImage {
   -webkit-transform: rotate(-90deg);
   -moz-transform: rotate(-90deg);

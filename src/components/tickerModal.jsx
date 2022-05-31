@@ -23,7 +23,7 @@ const TickerModal = (props) => {
                 </h5>
               </div>
               <div className="col-3">
-                <img src={logoData} className="logoMaxWidth2"/>
+                <img src={logoData} alt='Logo' className="logoMaxWidth2"/>
               </div>
             </div>
             <div className="modal-body">

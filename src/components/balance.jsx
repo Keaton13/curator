@@ -1,36 +1,20 @@
-import React, { useEffect } from "react";
+import React from "react";
 import Cards from "./cards";
 import Transactions from "./transactions";
-import { useMoralis, useNativeBalance } from "react-moralis";
+// import { saveWalletBalance } from "../redux/actions/web3Actions";
+import { useMoralis } from "react-moralis";
 
 const Balance = (props) => {
   const {
     authenticate,
     isAuthenticated,
-    isAuthenticating,
     user,
-    account,
     logout,
   } = useMoralis();
-
-  const {
-    getBalances,
-    data: balance,
-    nativeToken,
-    error,
-    isLoading,
-  } = useNativeBalance();
 
   const login = async () => {
     if (!isAuthenticated) {
       await authenticate({ signingMessage: "Log in using Moralis" })
-        .then(function (user) {
-          // console.log("logged in user:", user);
-          // console.log(user.get("ethAddress"));
-        })
-        .then(() => {
-          getBalances();
-        })
         .catch(function (error) {
           console.log(error);
         });
@@ -40,11 +24,10 @@ const Balance = (props) => {
 
   const logOut = async () => {
     await logout();
-    console.log("logged out");
   };
 
   return (
-    <div className="container min-width100">
+    <div className="container min-width100 min-Height100">
       <div className="row mt-3 headerLinks">
         <div className="col-2 h-100"></div>
         <div className="col-6 h-100">
@@ -77,7 +60,7 @@ const Balance = (props) => {
         <div className="col-2 h-100"></div>
         <div className="col-2 h-100"></div>
       </div>
-      <Cards balance={balance} />
+      <Cards />
       <Transactions />
     </div>
   );

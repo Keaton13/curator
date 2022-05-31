@@ -79,7 +79,7 @@ class Ticker extends React.Component {
         <div>
           <div>
             <div className="row">
-              {this.state.modal.status == "modal2" && (
+              {this.state.modal.status === "modal2" && (
                 <TickerModal modal={modalData} handleModal={this.handleModal} />
               )}
               <table className="table table-layout">
@@ -106,7 +106,7 @@ class Ticker extends React.Component {
                         >
                           <th scope="row">
                             <div className="">
-                              <img src={logo} className="logoMaxWidth" />
+                              <img src={logo} alt='Logo' className="logoMaxWidth" />
                             </div>
                             <div className="">{dat.cmc_rank}</div>
                           </th>
