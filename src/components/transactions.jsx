@@ -4,7 +4,7 @@ import { HandleTransaction } from "../redux/actions/web3Actions";
 import { useNativeTransactions, useMoralis } from "react-moralis";
 
 const Transactions = () => {
-  const { getNativeTransations, data, chainId, error, isLoading, isFetching } =
+  const { getNativeTransations, data} =
     useNativeTransactions();
   const { Moralis, isAuthenticated } = useMoralis();
   const dispatch = useDispatch();
@@ -33,7 +33,7 @@ const Transactions = () => {
               {data !== null &&
                 data.result.map((transaction) => {
                     return (
-                      <tr>
+                      <tr id={transaction[transaction]}>
                         <td>{transaction.block_hash}</td>
                         <td>
                           {Moralis.Units.FromWei(transaction.value) + " ETH"}
