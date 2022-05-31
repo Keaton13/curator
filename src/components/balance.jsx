@@ -32,12 +32,7 @@ const Balance = (props) => {
         <div className="col-2 h-100"></div>
         <div className="col-6 h-100">
           {!isAuthenticated ? (
-            <button
-              className="btn btn-outline-primary float-left"
-              onClick={login}
-            >
-              LogIn
-            </button>
+            <p></p>
           ) : (
             <div className="row align-items-center">
               <div className="col-3">
@@ -47,12 +42,6 @@ const Balance = (props) => {
                 <h5 className="mb-0">{user.get("ethAddress")}</h5>
               </div>
               <div className="col-2">
-                <button
-                  className="btn btn-outline-primary float-left"
-                  onClick={logOut}
-                >
-                  LogOut
-                </button>
               </div>
             </div>
           )}

@@ -6,11 +6,6 @@ import Chip from "../images/chip.png";
 import { saveWalletBalance } from "../redux/actions/web3Actions";
 
 const Cards = () => {
-  let ethAddress;
-  let ethBalance;
-  let ethGas;
-  let totalEthSent;
-
   const [status, setStatus] = useState(false);
   const { user, isAuthenticated, Moralis } = useMoralis();
   const dispatch = useDispatch();
@@ -43,10 +38,12 @@ const Cards = () => {
   }, [balance.balance, transactionData, user]);
 
   const saveMoralisData = async () => {
-    ethAddress = user.get("ethAddress");
-    ethBalance = balance.balance;
-    ethGas = Moralis.Units.FromWei(transactionData.totalGas);
-    totalEthSent = Moralis.Units.FromWei(transactionData.totalEthSent);
+    const ethAddress = await user.get("ethAddress");
+    const ethBalance = balance.balance;
+    const ethGas = await Moralis.Units.FromWei(transactionData.totalGas);
+    const totalEthSent = await Moralis.Units.FromWei(transactionData.totalEthSent.substring(0, 10));
+
+    console.log(ethAddress);
 
     if (balance.balance !== undefined) {
       setStatus(true);
@@ -88,7 +85,7 @@ const Cards = () => {
                 Wallet Address:
               </p>
               {status === true ? (
-                <p className="text-white">{ethAddress}</p>
+                <p className="text-white">{user.get("ethAddress")}</p>
               ) : (
                 <p></p>
               )}
@@ -131,7 +128,7 @@ const Cards = () => {
                 Wallet Address:
               </p>
               {status === true ? (
-                <p className="text-white">{ethAddress}</p>
+                <p className="text-white">{user.get("ethAddress")}</p>
               ) : (
                 <p></p>
               )}
@@ -160,8 +157,7 @@ const Cards = () => {
             <div className="col">
               {status === true ? (
                 <h2 className="text-white text-align-left mgl-1">
-                  {transactionData !== null &&
-                    Moralis.Units.FromWei(transactionData.totalEthSent)}
+                  {transactionData !== null && Moralis.Units.FromWei(transactionData.totalEthSent)}
                 </h2>
               ) : (
                 <h2 className="text-white text-align-left mgl-1">0.00</h2>
@@ -174,7 +170,7 @@ const Cards = () => {
                 Wallet Address:
               </p>
               {status === true ? (
-                <p className="text-white">{ethAddress}</p>
+                <p className="text-white">{user.get("ethAddress")}</p>
               ) : (
                 <p></p>
               )}
