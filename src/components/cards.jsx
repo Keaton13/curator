@@ -43,10 +43,12 @@ const Cards = () => {
   }, [balance.balance, transactionData, user]);
 
   const saveMoralisData = async () => {
-    ethAddress = user.get("ethAddress");
+    ethAddress = await user.get("ethAddress");
     ethBalance = balance.balance;
-    ethGas = Moralis.Units.FromWei(transactionData.totalGas);
-    totalEthSent = Moralis.Units.FromWei(transactionData.totalEthSent);
+    ethGas = await Moralis.Units.FromWei(transactionData.totalGas);
+    totalEthSent = await Moralis.Units.FromWei(transactionData.totalEthSent);
+
+    console.log(ethAddress);
 
     if (balance.balance !== undefined) {
       setStatus(true);
@@ -88,7 +90,7 @@ const Cards = () => {
                 Wallet Address:
               </p>
               {status === true ? (
-                <p className="text-white">{ethAddress}</p>
+                <p className="text-white">{user.get("ethAddress")}</p>
               ) : (
                 <p></p>
               )}
@@ -131,7 +133,7 @@ const Cards = () => {
                 Wallet Address:
               </p>
               {status === true ? (
-                <p className="text-white">{ethAddress}</p>
+                <p className="text-white">{user.get("ethAddress")}</p>
               ) : (
                 <p></p>
               )}
@@ -174,7 +176,7 @@ const Cards = () => {
                 Wallet Address:
               </p>
               {status === true ? (
-                <p className="text-white">{ethAddress}</p>
+                <p className="text-white">{user.get("ethAddress")}</p>
               ) : (
                 <p></p>
               )}
