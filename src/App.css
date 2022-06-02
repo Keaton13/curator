@@ -47,6 +47,9 @@
 .headerFont {
   font-family: initial;
 }
+.logoFont {
+  font-family: cursive;
+}
 .cardLayout {
   display: flex;
   flex-direction: row;
