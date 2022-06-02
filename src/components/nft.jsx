@@ -57,13 +57,12 @@ const Nft = () => {
     <div className="container min-width100 min-Height100">
       <div className="row mt-3 headerLinks">
         <div className="col nftDisplay">
-          {status === true && <h3>Porfolio Value</h3>}
+          {status === true && <h3>Wallet NFT Display</h3>}
           <div className="row">
             {(isAuthenticated === true) & (nftMetaData !== null) ? (
               nftMetaData.map((nft) => {
                 // console.log(nftMetaData)
                 let metaData = JSON.parse(nft.metadata);
-                console.log(metaData);
                 return (
                   <div className="col-3 mt-3 mb-4">
                     <div className="container nftDisplayBackground">
