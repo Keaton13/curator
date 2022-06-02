@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 const NftImage = (props) => {
   return (
@@ -6,7 +6,7 @@ const NftImage = (props) => {
       <div className="container nftDisplayBackground">
         <div className="row">
           <div className="col">
-            <img src={props.metaData.image} alt="Nft" className="w-100 mt-4" />
+                <img loading="lazy" src={props.metaData.image} alt="Nft" className="w-100 mt-4"/>
           </div>
         </div>
         <div className="row mt-3 nftInfoDisplayHeight">
