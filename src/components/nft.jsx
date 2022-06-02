@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { HandleNftMetaData } from "../redux/actions/web3Actions";
 import { useMoralis } from "react-moralis";
 import Logo from "../images/images.png";
+import NftImage from "./nftImageComponent";
 
 const Nft = () => {
   const [status, setStatus] = useState(false);
@@ -64,28 +65,7 @@ const Nft = () => {
                 // console.log(nftMetaData)
                 let metaData = JSON.parse(nft.metadata);
                 return (
-                  <div className="col-3 mt-3 mb-4">
-                    <div className="container nftDisplayBackground">
-                      <div className="row">
-                        <div className="col">
-                          <img
-                            src={metaData.image}
-                            alt="Nft"
-                            className="w-100 mt-4"
-                          />
-                        </div>
-                      </div>
-                      <div className="row mt-3 nftInfoDisplayHeight">
-                        <div className="col-8">
-                          <div className="row text-align-left">
-                            <h5>{nft.name}</h5>
-                            <h5>{"#" + nft.token_id}</h5>
-                          </div>
-                        </div>
-                        <div className="col-4"></div>
-                      </div>
-                    </div>{" "}
-                  </div>
+                  <NftImage nft={nft} metaData={metaData}/>
                 );
               })
             ) : (
