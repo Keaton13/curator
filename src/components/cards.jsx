@@ -7,9 +7,6 @@ import { saveWalletBalance } from "../redux/actions/web3Actions";
 
 const Cards = () => {
   let ethAddress;
-  let ethBalance;
-  let ethGas;
-  let totalEthSent;
 
   const [status, setStatus] = useState(false);
   const { user, isAuthenticated, Moralis } = useMoralis();
@@ -44,9 +41,6 @@ const Cards = () => {
 
   const saveMoralisData = async () => {
     ethAddress = user.get("ethAddress");
-    ethBalance = balance.balance;
-    ethGas = Moralis.Units.FromWei(transactionData.totalGas);
-    totalEthSent = Moralis.Units.FromWei(transactionData.totalEthSent);
 
     if (balance.balance !== undefined) {
       setStatus(true);

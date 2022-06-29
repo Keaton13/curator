@@ -4,27 +4,8 @@ import Transactions from "./transactions";
 // import { saveWalletBalance } from "../redux/actions/web3Actions";
 import { useMoralis } from "react-moralis";
 
-const Balance = (props) => {
-  const {
-    authenticate,
-    isAuthenticated,
-    user,
-    logout,
-  } = useMoralis();
-
-  const login = async () => {
-    if (!isAuthenticated) {
-      await authenticate({ signingMessage: "Log in using Moralis" })
-        .catch(function (error) {
-          console.log(error);
-        });
-    } else {
-    }
-  };
-
-  const logOut = async () => {
-    await logout();
-  };
+const Balance = () => {
+  const { isAuthenticated, user } = useMoralis();
 
   return (
     <div className="container min-width100 min-Height100">
@@ -41,8 +22,7 @@ const Balance = (props) => {
               <div className="col-7">
                 <h5 className="mb-0">{user.get("ethAddress")}</h5>
               </div>
-              <div className="col-2">
-              </div>
+              <div className="col-2"></div>
             </div>
           )}
         </div>
