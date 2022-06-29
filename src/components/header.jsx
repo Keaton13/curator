@@ -6,7 +6,7 @@ import { Link } from "react-router-dom";
 import { useMoralis } from "react-moralis";
 
 const Header = () => {
-  const { authenticate, isAuthenticated, user, logout } = useMoralis();
+  const { authenticate, isAuthenticated, logout } = useMoralis();
 
   const login = async () => {
     if (!isAuthenticated) {

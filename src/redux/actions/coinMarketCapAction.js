@@ -5,6 +5,7 @@ export const connectToApi = () => dispach => {
         method: 'GET',
         headers: {
             'X-CMC_PRO_API_KEY': '485fb1f7-77fa-4b36-863c-b6727a18c43d',
+            "Access-Control-Allow-Origin": "*"
           }
       })
         .then(res => {
@@ -39,6 +40,7 @@ export const getCoinMetaData = (data) => dispach => {
         method: 'GET',
         headers: {
             'X-CMC_PRO_API_KEY': '485fb1f7-77fa-4b36-863c-b6727a18c43d',
+            "Access-Control-Allow-Origin": "*"
           }
       })
         .then(res => {

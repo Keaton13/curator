@@ -78,7 +78,6 @@ const Nft = () => {
                     <div className="col text-center">
                       <div className="row text-center">
                         <h3>Please login to continue</h3>
-                        <h5></h5>
                       </div>
                       <div className="row mb-5">
                         <div className="col text-center">
