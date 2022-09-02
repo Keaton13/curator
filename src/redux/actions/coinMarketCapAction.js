@@ -1,7 +1,7 @@
 import { CONNECT_TO_COINMARKETCAP_API, GET_COIN_METADATA } from './types';
 
 export const connectToApi = () => dispach => {
-    fetch('https://cors-anywhere.herokuapp.com/https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest', {
+    fetch('https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest', {
         method: 'GET',
         headers: {
             'X-CMC_PRO_API_KEY': '485fb1f7-77fa-4b36-863c-b6727a18c43d',
@@ -36,7 +36,7 @@ export const getCoinMetaData = (data) => dispach => {
             ids = ids + data[i] + ","
         }
     }
-    fetch(`https://cors-anywhere.herokuapp.com/https://pro-api.coinmarketcap.com/v1/cryptocurrency/info?id=${ids}`, {
+    fetch(`https://pro-api.coinmarketcap.com/v1/cryptocurrency/info?id=${ids}`, {
         method: 'GET',
         headers: {
             'X-CMC_PRO_API_KEY': '485fb1f7-77fa-4b36-863c-b6727a18c43d',
