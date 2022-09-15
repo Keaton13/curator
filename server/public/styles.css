@@ -1,0 +1,200 @@
+.App {
+    text-align: center;
+  }
+  
+  .App-logo {
+    height: 40vmin;
+    pointer-events: none;
+  }
+  
+  .float-left {
+    float: left !important;
+  }
+  
+  .no-underline {
+    text-decoration: none !important;
+  }
+  
+  .modal2 {
+    position: fixed;
+    top: 0;
+    left: 0;
+    z-index: 1055;
+    width: 100%;
+    height: 100%;
+    overflow-x: hidden;
+    overflow-y: auto;
+    outline: 0;
+  }
+  
+  .headerLinks {
+    display: flex;
+    align-items: center;
+  }
+  .headerLinkColor {
+    color: black;
+  }
+  .headerText {
+    text-align: left;
+    margin-left: 3%;
+  }
+  .headerHeightClass {
+    max-height: 4rem;
+  }
+  .headerLogoWidth {
+    width: 11%;
+  }
+  .headerFont {
+    font-family: initial;
+  }
+  .logoFont {
+    font-family: cursive;
+  }
+  .cardLayout {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-start;
+    padding: 0px;
+  
+    height: 220px;
+    left: 13%;
+    right: 224px;
+    top: 164px;
+  }
+  .card {
+    position: static;
+    border-radius: 1.25rem !important;
+    width: 368px;
+    height: 220px;
+    left: 0px;
+    top: 0px;
+    /* Inside auto layout */
+    flex: none;
+    order: 0;
+    flex-grow: 1;
+    margin: 0px 24px;
+    background: linear-gradient(90deg, #02aab0 0%, #00cdac 100%);
+  }
+  .cardImage {
+    float: left;
+    margin-left: 1rem;
+  }
+  .cardAddressFontSize {
+    font-size: 0.75rem;
+  }
+  .cardSymbolWidth {
+    max-width: 26.49px;
+  }
+  .min-width100 {
+    min-width: 100%;
+  }
+  .min-Height100 {
+    min-height: 100vh;
+  }
+   
+  .rotateImage {
+    -webkit-transform: rotate(-90deg);
+    -moz-transform: rotate(-90deg);
+    -ms-transform: rotate(-90deg);
+    -o-transform: rotate(-90deg);
+    transform: rotate(-90deg);
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+      animation: App-logo-spin infinite 20s linear;
+    }
+  }
+  
+  .App-header {
+    background-color: #282c34;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    font-size: calc(10px + 2vmin);
+    color: white;
+  }
+  
+  .App-link {
+    color: #61dafb;
+  }
+  
+  .HeaderMaxHeight {
+    max-height: 4rem;
+  }
+  .float-right-custom {
+    float: right !important;
+  }
+  .background-color-header {
+    background-color: white;
+    font-family: cursive;
+  }
+  .background-color-app {
+    background: radial-gradient(
+      67.22% 50% at 50% 50%,
+      rgb(51 231 255 / 37%) 0%,
+      rgb(245 228 255 / 52%) 100%
+    );
+    opacity: 0.9;
+  }
+  .walletFontSize {
+    font-size: 3vw;
+  }
+  .stonkGreen {
+    color: #16c784;
+  }
+  .logoMaxWidth {
+    max-width: 15%;
+  }
+  .logoMaxWidth2 {
+    max-width: 45%;
+  }
+  .table-layout {
+    table-layout: fixed;
+  }
+  .text-align-right {
+    text-align: right;
+  }
+  .text-align-left {
+    text-align: left;
+  }
+  #cardAddress {
+    font-weight: bold;
+    margin-left: 12px;
+  }
+  @keyframes App-logo-spin {
+    from {
+      transform: rotate(0deg);
+    }
+    to {
+      transform: rotate(360deg);
+    }
+  }
+  /* Custom Margins */
+  .mgl-1 {
+    margin-left: 10px;
+  }
+  
+  /* Custom Que */
+  .nftDisplay {
+    width: 660px;
+    left: 144px;
+    top: 99px;
+    border-radius: 16px;
+    padding: 24px, 28px, 24px, 28px;
+  }
+  .nftDisplayBackground {
+    background: #ffffff;
+    box-shadow: 0px 33px 80px rgba(180, 192, 230, 0.07),
+      0px 13.7866px 33.4221px rgba(180, 192, 230, 0.0503198),
+      0px 7.37098px 17.869px rgba(180, 192, 230, 0.0417275),
+      0px 4.13211px 10.0172px rgba(180, 192, 230, 0.035),
+      0px 2.19453px 5.32008px rgba(180, 192, 230, 0.0282725),
+      0px 0.913195px 2.21381px rgba(180, 192, 230, 0.0196802);
+    border-radius: 16px;
+  }
+  .nftInfoDisplayHeight {
+    min-height: 200px;
+  }
+  

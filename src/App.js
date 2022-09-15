@@ -13,7 +13,7 @@ import { connectToApi } from './redux/actions/coinMarketCapAction';
 class App extends React.Component {
   componentDidMount() {
     try {
-      this.props.connectToApi()
+      this.props.connectToApi();
     } catch (error) {
       console.log(error)
     }
