@@ -38,6 +38,29 @@ app.get("/api/CoinMarketcapData", async (req, res) => {
       
 });
 
+app.post("/api/CoinMetaData", async (req, res) => {
+  console.log("Inside API 2.0 YOOOO");
+  console.log(req.body)
+  const {ids} = req.body;
+  console.log(ids);
+  var config = {
+    credentials: 'include',
+    method: 'GET',
+    url: `https://pro-api.coinmarketcap.com/v1/cryptocurrency/info?id=${ids}`,
+    headers: {
+      'X-CMC_PRO_API_KEY': '485fb1f7-77fa-4b36-863c-b6727a18c43d',
+      "Access-Control-Allow-Origin": "*"
+    }
+  }
 
+  axios(config)
+  .then(function (response) {
+    let data = JSON.stringify(response.data);
+    res.send(data);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+})
 
 app.listen(port, () => console.log(`Server Running On Port ${port}...`));
