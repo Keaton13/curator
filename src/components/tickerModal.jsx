@@ -33,43 +33,43 @@ const TickerModal = (props) => {
                 </div>
                 <div className="row">
                   <div className="col-5 p-0">
-                    <div className="row">
+                    <div className="row text-center">
                       <h5>Price</h5>
                     </div>
-                    <div className="row">
+                    <div className="row text-center">
                       <h5>Volume</h5>
                     </div>
-                    <div className="row">
+                    <div className="row text-center">
                       <h5>Market Cap</h5>
                     </div>
-                    <div className="row">
+                    <div className="row text-center">
                       <h5>supply</h5>
                     </div>
-                    <div className="row">
+                    <div className="row text-center">
                       <h5>1hr</h5>
                     </div>
-                    <div className="row">
+                    <div className="row text-center">
                       <h5>24hr</h5>
                     </div>
-                    <div className="row">
+                    <div className="row text-center">
                       <h5>7d</h5>
                     </div>
-                    <div className="row">
+                    <div className="row text-center">
                       <h5>30d</h5>
                     </div>
-                    <div className="row">
+                    <div className="row text-center">
                       <h5>60d</h5>
                     </div>
                   </div>
                   <div className="col-7">
-                    <div className="row">
+                    <div className="row text-center">
                       <h5>
                         {modalData.quote.USD.price.toLocaleString(undefined, {
                           maximumFractionDigits: 2,
                         }) + "$"}
                       </h5>
                     </div>
-                    <div className="row">
+                    <div className="row text-center">
                       <h5>
                         {modalData.quote.USD.volume_24h.toLocaleString(
                           undefined,
@@ -77,7 +77,7 @@ const TickerModal = (props) => {
                         ) + "$"}
                       </h5>
                     </div>
-                    <div className="row">
+                    <div className="row text-center">
                       <h5>
                         {modalData.quote.USD.market_cap.toLocaleString(
                           undefined,
@@ -85,14 +85,14 @@ const TickerModal = (props) => {
                         ) + "$"}
                       </h5>
                     </div>
-                    <div className="row">
+                    <div className="row text-center">
                       <h5>
                         {modalData.total_supply.toLocaleString(undefined, {
                           maximumFractionDigits: 2,
                         })}
                       </h5>
                     </div>
-                    <div className="row">
+                    <div className="row text-center">
                       {modalData.quote.USD.percent_change_1h > 0 ? (
                         <h5 className="stonkGreen">
                           {"+" +
@@ -106,7 +106,7 @@ const TickerModal = (props) => {
                         </h5>
                       )}
                     </div>
-                    <div className="row">
+                    <div className="row text-center">
                       {modalData.quote.USD.percent_change_24h > 0 ? (
                         <h5 className="stonkGreen">
                           {"+" +
@@ -120,7 +120,7 @@ const TickerModal = (props) => {
                         </h5>
                       )}
                     </div>
-                    <div className="row">
+                    <div className="row text-center">
                       {modalData.quote.USD.percent_change_7d > 0 ? (
                         <h5 className="stonkGreen">
                           {"+" +
@@ -134,7 +134,7 @@ const TickerModal = (props) => {
                         </h5>
                       )}
                     </div>
-                    <div className="row">
+                    <div className="row text-center">
                       {modalData.quote.USD.percent_change_30d > 0 ? (
                         <h5 className="stonkGreen">
                           {"+" +
@@ -148,7 +148,7 @@ const TickerModal = (props) => {
                         </h5>
                       )}
                     </div>
-                    <div className="row">
+                    <div className="row text-center">
                       {modalData.quote.USD.percent_change_60d > 0 ? (
                         <h5 className="stonkGreen">
                           {"+" +

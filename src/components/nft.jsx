@@ -56,8 +56,8 @@ const Nft = () => {
 
   return (
     <div className="container min-width100 min-Height100">
-      <div className="row mt-3 headerLinks">
-        <div className="col nftDisplay">
+      <div className="row mt-3 nftDisplay">
+        <div className="col">
           {status === true && <h3>Wallet NFT Display</h3>}
           <div className="row">
             {(isAuthenticated === true) & (nftMetaData !== null) ? (

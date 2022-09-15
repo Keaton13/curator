@@ -1,13 +1,8 @@
 import { CONNECT_TO_COINMARKETCAP_API, GET_COIN_METADATA } from './types';
 
 export const connectToApi = () => dispach => {
-    fetch('https://pro-api.coinmarketcap.com/v1/cryptocurrency/listings/latest', {
-        method: 'GET',
-        headers: {
-            'X-CMC_PRO_API_KEY': '485fb1f7-77fa-4b36-863c-b6727a18c43d',
-            "Access-Control-Allow-Origin": "*"
-          }
-      })
+  console.log("In redux reducer")
+    fetch('http://localhost:3001/api/CoinMarketcapData')
         .then(res => {
           const data = res.json();
           return data;
@@ -36,13 +31,13 @@ export const getCoinMetaData = (data) => dispach => {
             ids = ids + data[i] + ","
         }
     }
-    fetch(`https://pro-api.coinmarketcap.com/v1/cryptocurrency/info?id=${ids}`, {
-        method: 'GET',
-        headers: {
-            'X-CMC_PRO_API_KEY': '485fb1f7-77fa-4b36-863c-b6727a18c43d',
-            "Access-Control-Allow-Origin": "*"
-          }
-      })
+    fetch(`http://localhost:3001/api/CoinMetaData`, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify({'ids': ids})
+    })
         .then(res => {
           const result = res.json();
           return result;
