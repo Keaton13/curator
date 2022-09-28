@@ -2,9 +2,9 @@ const express = require("express");
 const axios = require("axios");
 const cors = require("cors");
 const bodyParser = require("body-parser");
-
-const port = 3001;
+const path = require('path');
 const app = express();
+const port = process.env.port || 3001;
 
 // Middleware
 const options = {
@@ -14,6 +14,17 @@ app.use(cors(options))
 app.use(bodyParser.json({ limit: "10mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
 app.use(express.json());
+
+if(process.env.NODE_ENV === "production") {
+  app.use(express.static(path.join(__dirname, '/src/build')));
+  app.get('*', (req, res) => {
+    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+  })
+} else {
+  app.get('/', async (req, res) => {
+    res.send('Api running')
+  })
+}
 
 // API HERE
 app.get("/api/CoinMarketcapData", async (req, res) => {
@@ -40,9 +51,7 @@ app.get("/api/CoinMarketcapData", async (req, res) => {
 
 app.post("/api/CoinMetaData", async (req, res) => {
   console.log("Inside API 2.0 YOOOO");
-  console.log(req.body)
   const {ids} = req.body;
-  console.log(ids);
   var config = {
     credentials: 'include',
     method: 'GET',
