@@ -4,13 +4,10 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require('path');
 const app = express();
-const port = process.env.port || 3001;
+let port = process.env.port
 
-// Middleware
-const options = {
-  origin: 'http://localhost:3000',
-  }
-app.use(cors(options))
+// Middleware  }
+app.use(cors())
 app.use(bodyParser.json({ limit: "10mb", extended: true }));
 app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
 app.use(express.json());
@@ -72,4 +69,7 @@ app.post("/api/CoinMetaData", async (req, res) => {
   });
 })
 
+if (port == null || port == "") {
+  port = 8000;
+}
 app.listen(port, () => console.log(`Server Running On Port ${port}...`));
