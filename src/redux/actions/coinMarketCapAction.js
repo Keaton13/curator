@@ -2,7 +2,7 @@ import { CONNECT_TO_COINMARKETCAP_API, GET_COIN_METADATA } from './types';
 
 export const connectToApi = () => dispach => {
   console.log("In redux reducer")
-    fetch('http://localhost:3001/api/CoinMarketcapData')
+    fetch('https://curatorv2.herokuapp.com/api/CoinMarketcapData')
         .then(res => {
           const data = res.json();
           return data;
@@ -31,7 +31,7 @@ export const getCoinMetaData = (data) => dispach => {
             ids = ids + data[i] + ","
         }
     }
-    fetch(`http://localhost:3001/api/CoinMetaData`, {
+    fetch(`https://curatorv2.herokuapp.com/api/CoinMetaData`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
