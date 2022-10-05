@@ -4,7 +4,7 @@ const cors = require("cors");
 const bodyParser = require("body-parser");
 const path = require('path');
 const app = express();
-let port = process.env.port
+let PORT = process.env.PORT
 
 // Middleware  }
 app.use(cors())
@@ -69,7 +69,7 @@ app.post("/api/CoinMetaData", async (req, res) => {
   });
 })
 
-if (port == null || port == "") {
-  port = 8000;
+if (PORT == null || PORT == "") {
+  PORT = 8000;
 }
-app.listen(port, () => console.log(`Server Running On Port ${port}...`));
+app.listen(PORT, () => console.log(`Server Running On Port ${PORT}...`));

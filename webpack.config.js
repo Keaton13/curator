@@ -3,6 +3,7 @@ const path = require('path');
 
 const clientPath = path.join(__dirname, 'src/');
 const publicPath = path.join(__dirname, 'server/public/');
+let PORT = process.env.PORT;
 
 module.exports = {
   resolve: {
@@ -46,7 +47,7 @@ module.exports = {
     contentBase: publicPath,
     historyApiFallback: true,
     host: '0.0.0.0',
-    port: 3000,
+    port: PORT,
     proxy: {
       '/api': `http://localhost:5000`
     },
