@@ -15,7 +15,7 @@ app.use(express.json());
 if(process.env.NODE_ENV === "production") {
   app.use(express.static(path.join(__dirname, '/src/build')));
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'client', 'build', 'index.html'));
+    res.sendFile(path.join(__dirname, 'public', 'index.html'));
   })
 } else {
   app.get('/', async (req, res) => {
@@ -70,6 +70,6 @@ app.post("/api/CoinMetaData", async (req, res) => {
 })
 
 if (PORT == null || PORT == "") {
-  PORT = 8000;
+  PORT = 3001;
 }
 app.listen(PORT, () => console.log(`Server Running On Port ${PORT}...`));
