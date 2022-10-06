@@ -13,9 +13,10 @@ app.use(bodyParser.urlencoded({ limit: "10mb", extended: true }));
 app.use(express.json());
 
 if(process.env.NODE_ENV === "production") {
-  app.use(express.static(path.join(__dirname, '/src/build')));
+  console.log(__dirname)
+  app.use(express.static(path.join(__dirname, '/public')));
   app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, 'public', 'index.html'));
+    res.sendFile(path.join(__dirname, '../src', 'index.js'));
   })
 } else {
   app.get('/', async (req, res) => {
