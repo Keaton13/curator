@@ -15,9 +15,9 @@ app.use(express.json());
 if(process.env.NODE_ENV === "production") {
   console.log(__dirname)
   app.use(express.static(path.join(__dirname, '/public')));
-  app.get('*', (req, res) => {
-    res.sendFile(path.join(__dirname, '../src', 'index.js'));
-  })
+  // app.get('*', (req, res) => {
+  //   res.sendFile(path.join(__dirname, '../src', 'index.js'));
+  // })
 } else {
   app.get('/', async (req, res) => {
     res.send('Api running')
