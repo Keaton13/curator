@@ -70,6 +70,28 @@ app.post("/api/CoinMetaData", async (req, res) => {
   });
 })
 
+app.get("/api/WhaleAlert", async (req, res) => {
+  console.log("inside whaleAlert Api call")
+
+  let config = {
+    credentials: 'include',
+    method: 'GET',
+    url: 'https://api.whale-alert.io/v1/transactions?api_key=aEhtUqSlRgn06iXo1AloB5yKYzdSAS1X&min_value=10000&start=1550237797&cursor=2bc7e46-2bc7e46-5c66c0a7',
+    headers: { 
+      'X-CMC_PRO_API_KEY': '485fb1f7-77fa-4b36-863c-b6727a18c43d'
+    }
+  }
+
+  axios(config)
+  .then(function (response) {
+    let data = JSON.stringify(response.data);
+    res.send(data);
+  })
+  .catch(function (error) {
+    console.log(error);
+  })
+})
+
 if (PORT == null || PORT == "") {
   PORT = 3001;
 }

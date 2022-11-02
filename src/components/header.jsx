@@ -78,19 +78,24 @@ const Header = () => {
       </div>
       <div className="col-4 headerHeightClass">
         <div className="row h-100 headerLinks headerFont">
-          <div className="col-4">
+          <div className="col-3">
             <Link className="no-underline w-50 headerLinkColor" to="/">
               Balance
             </Link>
           </div>
-          <div className="col-4 headerHeightClass">
+          <div className="col-3 headerHeightClass">
             <Link className="no-underline w-50 headerLinkColor" to="ticker">
               Ticker
             </Link>
           </div>
-          <div className="col-4 headerHeightClass">
+          <div className="col-3 headerHeightClass">
             <Link className="no-underline w-50 headerLinkColor" to="nft">
               NFT's
+            </Link>
+          </div>
+          <div className="col-3 headerHeightClass">
+            <Link className="no-underline w-50 headerLinkColor" to="whale">
+              Whale Alert
             </Link>
           </div>
         </div>
