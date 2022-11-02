@@ -1,21 +1,21 @@
-import React from 'react';
-import { connect } from 'react-redux';
-import PropTypes from 'prop-types';
-import './App.css';
-import { Route, Routes, HashRouter, } from 'react-router-dom';
-import Header from '../src/components/header'
-import Balance from './components/balance';
-import Ticker from './components/ticker';
-import Nft from './components/nft';
-import { connectToApi } from './redux/actions/coinMarketCapAction';
-
+import React from "react";
+import { connect } from "react-redux";
+import PropTypes from "prop-types";
+import "./App.css";
+import { Route, Routes, HashRouter } from "react-router-dom";
+import Header from "../src/components/header";
+import Balance from "./components/balance";
+import Ticker from "./components/ticker";
+import Nft from "./components/nft";
+import Whale from "./components/whale";
+import { connectToApi } from "./redux/actions/coinMarketCapAction";
 
 class App extends React.Component {
   componentDidMount() {
     try {
       this.props.connectToApi();
     } catch (error) {
-      console.log(error)
+      console.log(error);
     }
   }
 
@@ -30,30 +30,28 @@ class App extends React.Component {
                 <Route path="/" element={<Balance />} />
                 <Route path="ticker" element={<Ticker />} />
                 <Route path="nft" element={<Nft />} />
+                <Route path="whale" element={<Whale />} />
               </Routes>
             </div>
           </div>
         </HashRouter>
-
       );
     } else {
       return (
         <div>
           <h1>Loading</h1>
         </div>
-      )
+      );
     }
-
   }
-
 }
 
 App.propTypes = {
-  connectToApi: PropTypes.func.isRequired
-}
+  connectToApi: PropTypes.func.isRequired,
+};
 
-const mapStateToProps = state => ({
+const mapStateToProps = (state) => ({
   coinData: state.coinMarketCap.coinData,
-})
+});
 
 export default connect(mapStateToProps, { connectToApi })(App);
