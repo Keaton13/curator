@@ -16,9 +16,9 @@ const WhaleAlert = () => {
 
   useEffect(() => {
     if (isAuthenticated === true && whaleTransactionData !== null) {
-        console.log(whaleTransactionData);
+      console.log(whaleTransactionData);
     } else if (isAuthenticated === true && whaleTransactionData === null) {
-        dispatch(getWhaleTransactions());
+      dispatch(getWhaleTransactions());
     }
   }, [whaleTransactionData]);
 
@@ -29,23 +29,24 @@ const WhaleAlert = () => {
           <table className="table table-layout">
             <thead className="bg-dark text-white">
               <tr>
-                <th className="w-50">Transaction</th>
-                <th>Value</th>
-                <th>Time</th>
+                <th scope="col">Blockchain</th>
+                <th scope="col">Amount USD</th>
+                <th scope="col">From</th>
+                <th scope="col">To</th>
+                <th scope="col">Type</th>
               </tr>
             </thead>
             <tbody>
               {(isAuthenticated === true) & (whaleTransactionData !== null) ? (
-                whaleTransactionData.map((transaction) => {
+                whaleTransactionData.transactions.map((transaction) => {
                   return (
-                    // <tr id={transaction[transaction]}>
-                    //   <td>{transaction.block_hash}</td>
-                    //   <td>
-                    //     {Moralis.Units.FromWei(transaction.value) + " ETH"}
-                    //   </td>
-                    //   <td>{transaction.block_timestamp}</td>
-                    // </tr>
-                    console.log(transaction)
+                    <tr>
+                      <td>{transaction.blockchain}</td>
+                      <td>{transaction.amount_usd}</td>
+                      <td>{transaction[from].address}</td>
+                      <td>{transaction[to].address}</td>
+                      <td>{transaction.transaction_type}</td>
+                    </tr>
                   );
                 })
               ) : (
