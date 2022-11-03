@@ -43,8 +43,8 @@ const WhaleAlert = () => {
                     <tr>
                       <td>{transaction.blockchain}</td>
                       <td>{transaction.amount_usd}</td>
-                      <td>{transaction[from].address}</td>
-                      <td>{transaction[to].address}</td>
+                      <td>{transaction.from.address}</td>
+                      <td>{transaction.to.address}</td>
                       <td>{transaction.transaction_type}</td>
                     </tr>
                   );
