@@ -31,8 +31,8 @@ const WhaleAlert = () => {
               <tr>
                 <th scope="col">Blockchain</th>
                 <th scope="col">Amount USD</th>
-                <th scope="col-4">From</th>
-                <th scope="col-4">To</th>
+                <th scope="col">From</th>
+                <th scope="col">To</th>
                 <th scope="col">Type</th>
               </tr>
             </thead>
@@ -41,19 +41,19 @@ const WhaleAlert = () => {
                 whaleTransactionData.transactions.map((transaction) => {
                   return (
                     <tr className="mt-3 mb-3 bg-white">
-                      <td>
+                      <td className="col">
                         <h5 className="font-weight-bold">{transaction.blockchain}</h5>
                         <span className="text-secondary">
 
                         </span>
                         </td>
-                      <td>$ {transaction.amount_usd.toLocaleString(
+                      <td className="col">${transaction.amount_usd.toLocaleString(
                         undefined,
                         { maximumFractionDigits: 2 } 
                       )}</td>
-                      <td>{transaction.from.address}</td>
-                      <td>{transaction.to.address}</td>
-                      <td>{transaction.transaction_type}</td>
+                      <td className="col-4">{transaction.from.address}</td>
+                      <td className="col-4">{transaction.to.address}</td>
+                      <td className="col">{transaction.transaction_type}</td>
                     </tr>
                   );
                 })
