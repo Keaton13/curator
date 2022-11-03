@@ -5,6 +5,7 @@ export const getWhaleTransactions = () => (dispach) => {
   fetch("https://curatorv2.herokuapp.com/api/WhaleAlert")
     .then((res) => {
       const data = res.json();
+      console.log("Whale Alert Data", data);
       return data;
     })
     .then((data) => {
