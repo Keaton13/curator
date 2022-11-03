@@ -47,7 +47,10 @@ const WhaleAlert = () => {
 
                         </span>
                         </td>
-                      <td>{transaction.amount_usd.toFixed(2)}</td>
+                      <td>{transaction.amount_usd.toLocaleString(
+                        undefined,
+                        "$" + { maximumFractionDigits: 2 } 
+                      )}</td>
                       <td>{transaction.from.address}</td>
                       <td>{transaction.to.address}</td>
                       <td>{transaction.transaction_type}</td>
