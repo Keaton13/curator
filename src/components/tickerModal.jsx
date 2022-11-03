@@ -64,24 +64,24 @@ const TickerModal = (props) => {
                   <div className="col-7">
                     <div className="row text-center">
                       <h5>
-                        {modalData.quote.USD.price.toLocaleString(undefined, {
+                        $ {modalData.quote.USD.price.toLocaleString(undefined, {
                           maximumFractionDigits: 2,
                         })}
                       </h5>
                     </div>
                     <div className="row text-center">
                       <h5>
-                        {modalData.quote.USD.volume_24h.toLocaleString(
+                        $ {modalData.quote.USD.volume_24h.toLocaleString(
                           undefined,
-                         "$" + { maximumFractionDigits: 2 }
+                         { maximumFractionDigits: 2 }
                         )}
                       </h5>
                     </div>
                     <div className="row text-center">
                       <h5>
-                        {modalData.quote.USD.market_cap.toLocaleString(
+                        $ {modalData.quote.USD.market_cap.toLocaleString(
                           undefined,
-                          "$" + { maximumFractionDigits: 2 }
+                          { maximumFractionDigits: 2 }
                         )}
                       </h5>
                     </div>

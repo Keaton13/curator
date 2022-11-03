@@ -29,11 +29,11 @@ const WhaleAlert = () => {
           <table className="table table-layout">
             <thead className="bg-dark text-white">
               <tr>
-                <th scope="col-2">Blockchain</th>
-                <th scope="col-2">Amount USD</th>
-                <th scope="col-3">From</th>
-                <th scope="col-3">To</th>
-                <th scope="col-2">Type</th>
+                <th scope="col">Blockchain</th>
+                <th scope="col">Amount USD</th>
+                <th scope="col-4">From</th>
+                <th scope="col-4">To</th>
+                <th scope="col">Type</th>
               </tr>
             </thead>
             <tbody>
@@ -47,9 +47,9 @@ const WhaleAlert = () => {
 
                         </span>
                         </td>
-                      <td>{transaction.amount_usd.toLocaleString(
+                      <td>$ {transaction.amount_usd.toLocaleString(
                         undefined,
-                        "$" + { maximumFractionDigits: 2 } 
+                        { maximumFractionDigits: 2 } 
                       )}</td>
                       <td>{transaction.from.address}</td>
                       <td>{transaction.to.address}</td>
