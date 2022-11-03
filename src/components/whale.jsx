@@ -24,25 +24,30 @@ const WhaleAlert = () => {
 
   return (
     <div className="continer">
-      <div className="row mt-4 mb-3">
+      <div className="row">
         {isAuthenticated === true && (
           <table className="table table-layout">
             <thead className="bg-dark text-white">
               <tr>
-                <th scope="col">Blockchain</th>
-                <th scope="col">Amount USD</th>
-                <th scope="col">From</th>
-                <th scope="col">To</th>
-                <th scope="col">Type</th>
+                <th scope="col-2">Blockchain</th>
+                <th scope="col-2">Amount USD</th>
+                <th scope="col-3">From</th>
+                <th scope="col-3">To</th>
+                <th scope="col-2">Type</th>
               </tr>
             </thead>
             <tbody>
               {(isAuthenticated === true) & (whaleTransactionData !== null) ? (
                 whaleTransactionData.transactions.map((transaction) => {
                   return (
-                    <tr>
-                      <td>{transaction.blockchain}</td>
-                      <td>{transaction.amount_usd}</td>
+                    <tr className="mt-3 mb-3 bg-white">
+                      <td>
+                        <h5 className="font-weight-bold">{transaction.blockchain}</h5>
+                        <span className="text-secondary">
+
+                        </span>
+                        </td>
+                      <td>{transaction.amount_usd.toFixed(2)}</td>
                       <td>{transaction.from.address}</td>
                       <td>{transaction.to.address}</td>
                       <td>{transaction.transaction_type}</td>

@@ -76,7 +76,7 @@ app.get("/api/WhaleAlert", async (req, res) => {
   let config = {
     credentials: 'include',
     method: 'GET',
-    url: 'https://api.whale-alert.io/v1/transactions?api_key=aEhtUqSlRgn06iXo1AloB5yKYzdSAS1X&min_value=50000000',
+    url: 'https://api.whale-alert.io/v1/transactions?api_key=aEhtUqSlRgn06iXo1AloB5yKYzdSAS1X&min_value=500000',
     headers: { 
       'X-CMC_PRO_API_KEY': '485fb1f7-77fa-4b36-863c-b6727a18c43d'
     }
