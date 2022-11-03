@@ -36,7 +36,7 @@ const WhaleAlert = () => {
             </thead>
             <tbody>
               {(isAuthenticated === true) & (whaleTransactionData !== null) ? (
-                data.result.map((transaction) => {
+                whaleTransactionData.map((transaction) => {
                   return (
                     // <tr id={transaction[transaction]}>
                     //   <td>{transaction.block_hash}</td>
