@@ -50,8 +50,8 @@ const WhaleAlert = () => {
                         undefined,
                         { maximumFractionDigits: 2 } 
                       )}</td>
-                      <td className="col-4">{transaction.from.address}</td>
-                      <td className="col-4">{transaction.to.address}</td>
+                      <td className="col-4 overflow-auto">{transaction.from.address}</td>
+                      <td className="col-4 overflow-auto">{transaction.to.address}</td>
                     </tr>
                   );
                 })
