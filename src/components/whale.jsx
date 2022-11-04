@@ -33,7 +33,6 @@ const WhaleAlert = () => {
                 <th scope="col">Amount USD</th>
                 <th scope="col">From</th>
                 <th scope="col">To</th>
-                <th scope="col">Type</th>
               </tr>
             </thead>
             <tbody>
