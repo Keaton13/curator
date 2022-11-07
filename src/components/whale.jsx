@@ -25,7 +25,6 @@ const WhaleAlert = () => {
   return (
     <div className="continer">
       <div className="row">
-        {isAuthenticated === true && (
           <table className="table table-layout">
             <thead className="bg-dark text-white">
               <tr>
@@ -45,13 +44,14 @@ const WhaleAlert = () => {
                         <h5 className="font-weight-bold">
                           {transaction.blockchain}
                         </h5>
-                        <span className="text-secondary">{transaction.symbol}</span>
                       </td>
                       <td className="">
-                        {"$ " +
-                          transaction.amount.toLocaleString(undefined, {
-                            maximumFractionDigits: 2,
-                          })}
+                        {transaction.amount.toLocaleString(undefined, {
+                          maximumFractionDigits: 2,
+                        })}
+                        <span className="text-secondary">
+                          {transaction.symbol}
+                        </span>
                       </td>
                       <td className="">
                         {"$ " +
@@ -60,10 +60,14 @@ const WhaleAlert = () => {
                           })}
                       </td>
                       <td className="overflow-auto">
-                        {transaction.to.owner}
+                        <h5 className="font-weight-bold">
+                          {transaction.to.owner}
+                        </h5>
                       </td>
                       <td className="overflow-auto">
-                        {transaction.from.owner}
+                        <h5 className="font-weight-bold">
+                          {transaction.from.owner}
+                        </h5>
                       </td>
                     </tr>
                   );
@@ -96,7 +100,6 @@ const WhaleAlert = () => {
               )}
             </tbody>
           </table>
-        )}
       </div>
     </div>
   );
