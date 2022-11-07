@@ -30,9 +30,10 @@ const WhaleAlert = () => {
             <thead className="bg-dark text-white">
               <tr>
                 <th scope="col">Blockchain</th>
+                <th scope="col">Amount</th>
                 <th scope="col">Amount USD</th>
-                <th scope="col">From</th>
                 <th scope="col">To</th>
+                <th scope="col">From</th>
               </tr>
             </thead>
             <tbody>
@@ -40,18 +41,30 @@ const WhaleAlert = () => {
                 whaleTransactionData.transactions.map((transaction) => {
                   return (
                     <tr className="mt-3 mb-3 bg-white">
-                      <td className="col-2">
-                        <h5 className="font-weight-bold">{transaction.blockchain}</h5>
-                        <span className="text-secondary">
-
-                        </span>
-                        </td>
-                      <td className="col-2">{"$ " + transaction.amount_usd.toLocaleString(
-                        undefined,
-                        { maximumFractionDigits: 2 } 
-                      )}</td>
-                      <td className="col-4 overflow-auto">{transaction.from.address}</td>
-                      <td className="col-4 overflow-auto">{transaction.to.address}</td>
+                      <td className="">
+                        <h5 className="font-weight-bold">
+                          {transaction.blockchain}
+                        </h5>
+                        <span className="text-secondary">{transaction.symbol}</span>
+                      </td>
+                      <td className="">
+                        {"$ " +
+                          transaction.amount.toLocaleString(undefined, {
+                            maximumFractionDigits: 2,
+                          })}
+                      </td>
+                      <td className="">
+                        {"$ " +
+                          transaction.amount_usd.toLocaleString(undefined, {
+                            maximumFractionDigits: 2,
+                          })}
+                      </td>
+                      <td className="overflow-auto">
+                        {transaction.to.owner}
+                      </td>
+                      <td className="overflow-auto">
+                        {transaction.from.owner}
+                      </td>
                     </tr>
                   );
                 })
