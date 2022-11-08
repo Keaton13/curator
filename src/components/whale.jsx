@@ -23,8 +23,8 @@ const WhaleAlert = () => {
   }, [whaleTransactionData]);
 
   return (
-    <div className="continer">
-      <div className="row">
+    <div className="continer min-width100 min-Height100">
+      <div className="row mt-3">
         {(isAuthenticated === true) & (whaleTransactionData !== null) ? (
           <table className="table table-layout">
             <thead className="bg-dark text-white">
