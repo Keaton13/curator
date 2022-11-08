@@ -197,6 +197,9 @@
 .nftInfoDisplayHeight {
   min-height: 200px;
 }
+.nftImageRadius {
+  border-radius: 2%;
+}
 
 body {
   margin: 0;
