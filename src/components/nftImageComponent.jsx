@@ -1,7 +1,6 @@
 import React from "react";
 
 const NftImage = (props) => {
-  let metaData = JSON.parse(props.metaData);
   console.log(metaData);
   return (
     <div className="col-3 mt-3 mb-4">
