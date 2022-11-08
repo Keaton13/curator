@@ -1,8 +1,8 @@
 import React, { useEffect } from "react";
+import LogInModal from "./logInModal";
 import { useMoralis } from "react-moralis";
 import { useDispatch, useSelector } from "react-redux";
 import { getWhaleTransactions } from "../redux/actions/whaleAlertAction";
-import Logo from "../images/images.png";
 
 const WhaleAlert = () => {
   const { Moralis, isAuthenticated } = useMoralis();
@@ -25,6 +25,7 @@ const WhaleAlert = () => {
   return (
     <div className="continer">
       <div className="row">
+        {(isAuthenticated === true) & (whaleTransactionData !== null) ? (
           <table className="table table-layout">
             <thead className="bg-dark text-white">
               <tr>
@@ -36,70 +37,46 @@ const WhaleAlert = () => {
               </tr>
             </thead>
             <tbody>
-              {(isAuthenticated === true) & (whaleTransactionData !== null) ? (
-                whaleTransactionData.transactions.map((transaction) => {
-                  return (
-                    <tr className="mt-3 mb-3 bg-white">
-                      <td className="">
-                        <h5 className="font-weight-bold">
-                          {transaction.blockchain}
-                        </h5>
-                      </td>
-                      <td className="">
-                        {transaction.amount.toLocaleString(undefined, {
+              {whaleTransactionData.transactions.map((transaction) => {
+                return (
+                  <tr className="mt-3 mb-3 bg-white">
+                    <td className="">
+                      <h5 className="font-weight-bold">
+                        {transaction.blockchain}
+                      </h5>
+                    </td>
+                    <td className="">
+                      {transaction.amount.toLocaleString(undefined, {
+                        maximumFractionDigits: 2,
+                      })}
+                      <span className="text-secondary">
+                        {transaction.symbol}
+                      </span>
+                    </td>
+                    <td className="">
+                      {"$ " +
+                        transaction.amount_usd.toLocaleString(undefined, {
                           maximumFractionDigits: 2,
                         })}
-                        <span className="text-secondary">
-                          {transaction.symbol}
-                        </span>
-                      </td>
-                      <td className="">
-                        {"$ " +
-                          transaction.amount_usd.toLocaleString(undefined, {
-                            maximumFractionDigits: 2,
-                          })}
-                      </td>
-                      <td className="overflow-auto">
-                        <h5 className="font-weight-bold">
-                          {transaction.to.owner}
-                        </h5>
-                      </td>
-                      <td className="overflow-auto">
-                        <h5 className="font-weight-bold">
-                          {transaction.from.owner}
-                        </h5>
-                      </td>
-                    </tr>
-                  );
-                })
-              ) : (
-                <div className="col-3 mt-3 mb-4 mx-auto">
-                  <div className="container nftDisplayBackground">
-                    <div className="row">
-                      <div className="col"></div>
-                    </div>
-                    <div className="row mt-3 nftInfoDisplayHeight">
-                      <div className="col text-center">
-                        <div className="row text-center">
-                          <h3>Please login to continue</h3>
-                        </div>
-                        <div className="row mb-5">
-                          <div className="col text-center">
-                            <h1 className="mt-2 logoFont">Curator</h1>
-                            <img
-                              src={Logo}
-                              alt="Nft"
-                              className="w-50 mt-4 rotateImage"
-                            />
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              )}
+                    </td>
+                    <td className="overflow-auto">
+                      <h5 className="font-weight-bold">
+                        {transaction.to.owner}
+                      </h5>
+                    </td>
+                    <td className="overflow-auto">
+                      <h5 className="font-weight-bold">
+                        {transaction.from.owner}
+                      </h5>
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
+        ) : (
+          <LogInModal />
+        )}
       </div>
     </div>
   );
