@@ -50,7 +50,7 @@ const WhaleAlert = () => {
                         maximumFractionDigits: 2,
                       })}
                       <span className="text-secondary">
-                        {transaction.symbol}
+                        {" " + transaction.symbol}
                       </span>
                     </td>
                     <td className="">
