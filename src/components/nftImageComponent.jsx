@@ -1,7 +1,6 @@
 import React from "react";
 
 const NftImage = (props) => {
-  console.log(metaData);
   return (
     <div className="col-3 mt-3 mb-4">
       <div className="container nftDisplayBackground">
